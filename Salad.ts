@@ -55,6 +55,9 @@ namespace Abschlussarbeit {
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
 
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
+            if (this.nStorage == 0) {
+                prepareBtn.classList.add("isHidden");
+            }
             prepareBtn.addEventListener("click", Salad.prepare);
         }
 
@@ -68,8 +71,6 @@ namespace Abschlussarbeit {
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
             prepareBtn.classList.add("isHidden");
 
-            let counter: number = 20;
-            
             let progress: HTMLDivElement = document.createElement("div");
             progress.id = "progress";
             storageMenu.appendChild(progress);
@@ -77,6 +78,17 @@ namespace Abschlussarbeit {
             let pBar: HTMLDivElement = document.createElement("div");
             pBar.id = "pBar";
             progress.appendChild(pBar); 
+
+            let neededFill: number = this.barSize - this.nBar;
+            let nPreperation: number = 
+
+            if (neededFill > this.nStorage) {
+                this.nStorage -= this.nStorage;
+            } else {
+                this.nStorage -= neededFill;
+            }
+            
+            let counter: number = 20;
 
             const interval: number = setInterval(function(): void {
                 console.log(counter);
@@ -87,18 +99,23 @@ namespace Abschlussarbeit {
 
                 if (counter < 0) {
                     clearInterval(interval);
+
+                    pBar.classList.add("isHidden");
+                    progress.classList.add("isHidden");
                     let fillBar: HTMLButtonElement = document.createElement("button");
                     fillBar.id = "fillBar";
                     storageMenu.appendChild(fillBar);
+                    fillBar.innerText = "Theke füllen";
                     fillBar.addEventListener("click", Salad.fillBar);
+                
                 }
             },                                   1000);          
 
         }
 
         static fillBar(): void {
-
             
+
         }
     }    
 }

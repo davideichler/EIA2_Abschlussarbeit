@@ -35,6 +35,9 @@ var Abschlussarbeit;
             let ingredientLevelStorage = document.querySelector("#ingredientLevelStorage");
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
             let prepareBtn = document.querySelector("#prepare");
+            if (this.nStorage == 0) {
+                prepareBtn.classList.add("isHidden");
+            }
             prepareBtn.addEventListener("click", Salad.prepare);
         }
         static placeTopping() {
@@ -43,13 +46,21 @@ var Abschlussarbeit;
             let storageMenu = document.querySelector("#storageMenu");
             let prepareBtn = document.querySelector("#prepare");
             prepareBtn.classList.add("isHidden");
-            let counter = 20;
             let progress = document.createElement("div");
             progress.id = "progress";
             storageMenu.appendChild(progress);
             let pBar = document.createElement("div");
             pBar.id = "pBar";
             progress.appendChild(pBar);
+            let neededFill = this.barSize - this.nBar;
+            let nPreperation = ;
+            if (neededFill > this.nStorage) {
+                this.nStorage -= this.nStorage;
+            }
+            else {
+                this.nStorage -= neededFill;
+            }
+            let counter = 20;
             const interval = setInterval(function () {
                 console.log(counter);
                 counter--;
@@ -57,9 +68,12 @@ var Abschlussarbeit;
                 pBar.style.width = (counter / 20) * 100 + "%";
                 if (counter < 0) {
                     clearInterval(interval);
+                    pBar.classList.add("isHidden");
+                    progress.classList.add("isHidden");
                     let fillBar = document.createElement("button");
                     fillBar.id = "fillBar";
                     storageMenu.appendChild(fillBar);
+                    fillBar.innerText = "Theke füllen";
                     fillBar.addEventListener("click", Salad.fillBar);
                 }
             }, 1000);
