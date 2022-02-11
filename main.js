@@ -5,9 +5,9 @@ var Abschlussarbeit;
     console.log("Start");
     let nEmployees;
     let nCustomer;
-    let storageSize;
+    let stockCapacity;
     let background;
-    // let storageSize: string;
+    // let stockCapacity: string;
     function handleLoad(_event) {
         let form = document.querySelector("#form");
         form.addEventListener("change", handleChange);
@@ -15,8 +15,19 @@ var Abschlussarbeit;
         startBtn.addEventListener("click", createCanvas);
     }
     function handleChange(_event) {
-        storageSize = document.querySelector('input[name="storageSize"]:checked').value;
-        console.log(storageSize);
+        stockCapacity = document.querySelector('input[name="stockCapacity"]:checked').value;
+        console.log(stockCapacity);
+        if (stockCapacity == "high") {
+            Abschlussarbeit.stockFactor = 1.2;
+        }
+        else if (stockCapacity == "low") {
+            Abschlussarbeit.stockFactor = 0.8;
+        }
+        else if (stockCapacity == "medium") {
+            Abschlussarbeit.stockFactor = 1.0;
+        }
+        // StockFactor ist noch buggy
+        console.log(Abschlussarbeit.stockFactor);
         nEmployees = document.querySelector("#nEmployees").value;
         console.log(nEmployees);
         // Zuordnung aller Variablen
@@ -30,7 +41,7 @@ var Abschlussarbeit;
         Abschlussarbeit.crc2 = canvas.getContext("2d");
         let barContainer = document.querySelectorAll(".bar");
         for (let i of barContainer) {
-            i.addEventListener("click", showBarMenu);
+            i.addEventListener("click", callBarMenu);
         }
         canvas.addEventListener("click", handleClick);
         drawShop();
@@ -63,13 +74,27 @@ var Abschlussarbeit;
         crc2.translate(300, 20);
         crc2.beginPath(); */
     }
-    function showBarMenu(_event) {
-        let barMenu = document.querySelector("#barMenu");
+    function callBarMenu(_event) {
+        let target = _event.target.id;
+        //VS Code meckert, aber es funktioniert
+        console.log(target);
+        if (target == "salad") {
+            Abschlussarbeit.Salad.showBarMenu(_event);
+        }
+        else {
+        }
+        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
         barMenu.classList.remove("isHidden");
-        let x = _event.clientX;
-        let y = _event.clientY;
+
+        let x: number = _event.clientX;
+        let y: number = _event.clientY;
+
         barMenu.style.marginLeft = x + 20 + "px";
         barMenu.style.marginTop = y + -50 + "px";
+    
+        let ingredientName: HTMLParagraphElement = document.querySelector("#ingredientName")!;
+        
+ */
     }
     function handleClick(_event) {
         /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;

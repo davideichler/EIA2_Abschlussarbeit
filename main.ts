@@ -5,13 +5,13 @@ namespace Abschlussarbeit {
 
     let nEmployees: number;
     let nCustomer: number;
-    let storageSize: string;
+    let stockCapacity: string;
+    export let stockFactor: number;
     
     export let crc2: CanvasRenderingContext2D;
     
-
     let background: ImageData;
-   // let storageSize: string;
+   // let stockCapacity: string;
 
     function handleLoad(_event: Event): void {
 
@@ -24,8 +24,19 @@ namespace Abschlussarbeit {
 
     function handleChange(_event: Event): void {
 
-        storageSize = document.querySelector('input[name="storageSize"]:checked')!.value;
-        console.log(storageSize);
+        stockCapacity = document.querySelector('input[name="stockCapacity"]:checked')!.value;
+        console.log(stockCapacity);
+
+        if (stockCapacity == "high") {
+            stockFactor = 1.2;
+        } else if (stockCapacity == "low") {
+            stockFactor = 0.8;
+        } else if (stockCapacity == "medium") {
+            stockFactor = 1.0;
+        }
+
+        // StockFactor ist noch buggy
+        console.log(stockFactor);
 
         nEmployees = document.querySelector("#nEmployees")!.value;
         console.log(nEmployees);
@@ -46,7 +57,7 @@ namespace Abschlussarbeit {
 
         let barContainer: NodeListOf<HTMLSpanElement> = document.querySelectorAll(".bar")!;
         for (let i of barContainer) {
-            i.addEventListener("click", showBarMenu);
+            i.addEventListener("click", callBarMenu);
         }
 
         canvas.addEventListener("click", handleClick);
@@ -91,8 +102,17 @@ namespace Abschlussarbeit {
         crc2.beginPath(); */
     }
 
-    function showBarMenu(_event: MouseEvent): void {
-        let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
+    function callBarMenu(_event: MouseEvent): void {
+        let target: EventTarget = _event!.target!.id!;
+        //VS Code meckert, aber es funktioniert
+        console.log(target);
+
+        if (target == "salad") {
+            Salad.showBarMenu(_event);
+        } else {
+            
+        }
+        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
         barMenu.classList.remove("isHidden");
 
         let x: number = _event.clientX;
@@ -101,7 +121,9 @@ namespace Abschlussarbeit {
         barMenu.style.marginLeft = x + 20 + "px";
         barMenu.style.marginTop = y + -50 + "px";
     
-
+        let ingredientName: HTMLParagraphElement = document.querySelector("#ingredientName")!;
+        
+ */
 
     }
 

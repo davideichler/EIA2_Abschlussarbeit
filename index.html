@@ -10,7 +10,8 @@
     <script src="Human.js"></script>
     <script src="Employee.js"></script>
     <script src="Customer.js"></script>
-
+    <script src="Ingredient.js"></script>
+    <script src="Salad.js"></script>
     <script src="main.js"></script>
 </head>
 <body>
@@ -27,13 +28,13 @@
                 <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "10" step="1">
             </fieldset>
 
-            <fieldset class="fieldset" id="fsStorageSize">
+            <fieldset class="fieldset" id="fsstockCapacity">
                 <legend>Lagerkapazitäten</legend>
-                <input type="radio" id="sizeHigh" name="storageSize" value="high">
+                <input type="radio" id="sizeHigh" name="stockCapacity" value="high">
                 <label for="sizeHigh">Groß</label>
-                <input type="radio" id="sizeMedium" name="storageSize" value="medium">
+                <input type="radio" id="sizeMedium" name="stockCapacity" value="medium">
                 <label for="sizeMedium">Normal</label>
-                <input type="radio" id="sizeLow" name="storageSize" value="low">
+                <input type="radio" id="sizeLow" name="stockCapacity" value="low">
                 <label for="sizeLow">Gering</label>
             </fieldset>
 
@@ -53,7 +54,7 @@
         <span class="bar" id="peperoni"></span>
 
         <div id="barMenu" class="isHidden">
-            <p id="ingredient">Tomate</p>
+            <p id="ingredientName">Tomate</p>
             <p id="ingredientLevel">80%</p>
             <button id="topIngredient">Belegen</button>
         </div>
