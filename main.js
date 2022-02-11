@@ -43,7 +43,11 @@ var Abschlussarbeit;
         for (let i of barContainer) {
             i.addEventListener("click", callBarMenu);
         }
-        canvas.addEventListener("click", handleClick);
+        let storageContainer = document.querySelectorAll(".storage");
+        for (let i of storageContainer) {
+            i.addEventListener("click", callStorageMenu);
+        }
+        canvas.addEventListener("click", hideBarMenu);
         drawShop();
         background = Abschlussarbeit.crc2.getImageData(0, 0, Abschlussarbeit.crc2.canvas.width, Abschlussarbeit.crc2.canvas.height);
     }
@@ -83,18 +87,19 @@ var Abschlussarbeit;
         }
         else {
         }
-        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
-        barMenu.classList.remove("isHidden");
-
-        let x: number = _event.clientX;
-        let y: number = _event.clientY;
-
-        barMenu.style.marginLeft = x + 20 + "px";
-        barMenu.style.marginTop = y + -50 + "px";
-    
-        let ingredientName: HTMLParagraphElement = document.querySelector("#ingredientName")!;
-        
- */
+    }
+    function callStorageMenu(_event) {
+        let target = _event.target.id;
+        console.log(target);
+        if (target == "saladStorage") {
+            Abschlussarbeit.Salad.showStorageMenu(_event);
+        }
+        else {
+        }
+    }
+    function hideBarMenu(_event) {
+        let barMenu = document.querySelector("#barMenu");
+        barMenu.classList.add("isHidden");
     }
     function handleClick(_event) {
         /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;

@@ -60,11 +60,17 @@ namespace Abschlussarbeit {
             i.addEventListener("click", callBarMenu);
         }
 
-        canvas.addEventListener("click", handleClick);
+        let storageContainer: NodeListOf<HTMLSpanElement> = document.querySelectorAll(".storage")!;
+        for (let i of storageContainer) {
+            i.addEventListener("click", callStorageMenu);
+        }
+
+        canvas.addEventListener("click", hideBarMenu);
 
         drawShop();
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
     }
+    
 
     function drawShop(): void {
 
@@ -112,19 +118,25 @@ namespace Abschlussarbeit {
         } else {
             
         }
-        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
-        barMenu.classList.remove("isHidden");
+       
+    }
 
-        let x: number = _event.clientX;
-        let y: number = _event.clientY;
-
-        barMenu.style.marginLeft = x + 20 + "px";
-        barMenu.style.marginTop = y + -50 + "px";
-    
-        let ingredientName: HTMLParagraphElement = document.querySelector("#ingredientName")!;
+    function callStorageMenu(_event: MouseEvent): void {
         
- */
+        let target: EventTarget = _event!.target!.id!;
+        console.log(target);
 
+        if (target == "saladStorage") {
+            Salad.showStorageMenu(_event);
+        } else {
+            
+        }
+
+    }
+
+    function hideBarMenu(_event: MouseEvent): void {
+        let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
+        barMenu.classList.add("isHidden");
     }
 
 

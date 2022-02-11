@@ -14,11 +14,64 @@ var Abschlussarbeit;
             barMenu.style.marginTop = y + -50 + "px";
             let ingredientName = document.querySelector("#ingredientName");
             ingredientName.innerHTML = "Salat";
-            let percantageDisplay = this.nBar / this.barSize;
+            let percantageDisplay = (this.nBar / this.barSize) * 100;
+            console.log(percantageDisplay);
             let ingredientLevel = document.querySelector("#ingredientLevel");
-            ingredientLevel.innerHTML = "Füllstand " + percantageDisplay + "%" + " (of)" + this.barSize;
+            ingredientLevel.innerHTML = "Füllstand: " + percantageDisplay + "% " + this.nBar + "/" + this.barSize;
+            let topIngredient = document.querySelector("#topIngredient");
+            topIngredient.addEventListener("click", Salad.placeTopping);
+        }
+        static showStorageMenu(_event) {
+            let storageMenu = document.querySelector("#storageMenu");
+            storageMenu.classList.remove("isHidden");
+            let x = _event.clientX;
+            let y = _event.clientY;
+            storageMenu.style.marginLeft = x + 20 + "px";
+            storageMenu.style.marginTop = y + -50 + "px";
+            let ingredientNameStorage = document.querySelector("#ingredientNameStorage");
+            ingredientNameStorage.innerHTML = "Salat";
+            let percentageDisplayStorage = (this.nStorage / this.storageSize) * 100;
+            console.log(percentageDisplayStorage);
+            let ingredientLevelStorage = document.querySelector("#ingredientLevelStorage");
+            ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
+            let prepareBtn = document.querySelector("#prepare");
+            prepareBtn.addEventListener("click", Salad.prepare);
+        }
+        static placeTopping() {
+        }
+        static prepare() {
+            let storageMenu = document.querySelector("#storageMenu");
+            let prepareBtn = document.querySelector("#prepare");
+            prepareBtn.classList.add("isHidden");
+            let counter = 20;
+            let progress = document.createElement("div");
+            progress.id = "progress";
+            storageMenu.appendChild(progress);
+            let pBar = document.createElement("div");
+            pBar.id = "pBar";
+            progress.appendChild(pBar);
+            const interval = setInterval(function () {
+                console.log(counter);
+                counter--;
+                progress.style.width = "100px";
+                pBar.style.width = (counter / 20) * 100 + "%";
+                if (counter < 0) {
+                    clearInterval(interval);
+                    let fillBar = document.createElement("button");
+                    fillBar.id = "fillBar";
+                    storageMenu.appendChild(fillBar);
+                    fillBar.addEventListener("click", Salad.fillBar);
+                }
+            }, 1000);
+        }
+        static fillBar() {
         }
     }
+    Salad.nBar = 25;
+    Salad.barSize = 25;
+    Salad.nStorage = 100 * Abschlussarbeit.stockFactor;
+    Salad.storageSize = 100 * Abschlussarbeit.stockFactor;
+    Salad.preperationTime = 20;
     Abschlussarbeit.Salad = Salad;
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Salad.js.map

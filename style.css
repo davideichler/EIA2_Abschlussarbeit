@@ -62,8 +62,19 @@
 
 #barMenu {
     position: absolute;
-    width: 90px;
-    height: 60px;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid black;
+    text-align: center;
+    background-color: white;
+    line-height: 10%;
+    padding: 0.5%;
+}
+
+#storageMenu {
+    position: absolute;
+    width: 110px;
+    height: 90px;
     border-radius: 8px;
     border: 2px solid black;
     text-align: center;
@@ -72,9 +83,21 @@
     padding-bottom: 2%;
 }
 
+
 #topIngredient {
     cursor: pointer;
 
+}
+
+#progress {
+    width: 50px;
+    background-color: #ddd;
+}
+
+#pBar {
+    
+    height: 10px;
+    background-color: #04AA6D;
 }
 
 
