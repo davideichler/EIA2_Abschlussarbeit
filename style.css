@@ -1,8 +1,12 @@
 #mainContainer {
     width: 1080px;
     height: 720px;
-    
+    position: relative;
 }
+/* 
+#mainContainer canvas, #overlay {
+    position: absolute;
+} */
 
 #form {
     width: 500px;
@@ -27,3 +31,120 @@
 .isHidden {
     display: none !important;
 }
+
+.bar {
+    position: absolute;
+    width: 90px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.extra {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: grab ;
+
+}
+
+.storage {
+    position: absolute;
+    width: 90px;
+    height: 50px;
+    border: 2px solid black;
+    cursor: pointer;
+
+}
+
+#barMenu {
+    position: absolute;
+    width: 70px;
+    height: 60px;
+    border-radius: 8px;
+    border: 2px solid black;
+    text-align: center;
+    background-color: white;
+    line-height: 10%;
+    padding-bottom: 2%;
+}
+
+#topIngredient {
+    cursor: pointer;
+
+}
+
+
+#salad {
+    margin-left: 413px;
+    margin-top: 50px;
+}
+
+#onion {
+    margin-left: 413px;
+    margin-top: 110px;
+}
+
+#corn {
+    margin-left: 413px;
+    margin-top: 170px;
+}
+
+#tomato {
+    margin-left: 413px;
+    margin-top: 230px;
+}
+
+#kraut {
+    margin-left: 413px;
+    margin-top: 290px;
+}
+
+#peperoni {
+    margin-left: 413px;
+    margin-top: 350px;
+}
+
+#spicy {
+    margin-left: 413px;
+    margin-top: 410px;
+}
+
+#feta {
+    margin-left: 463px;
+    margin-top: 410px;
+}
+
+#saladStorage {
+    margin-left: 35px;
+    margin-top: 130px;
+}
+
+#onionStorage {
+    margin-left: 35px;
+    margin-top: 190px;
+}
+
+#cornStorage {
+    margin-left: 35px;
+    margin-top: 250px;
+}
+
+#tomatoStorage {
+    margin-left: 35px;
+    margin-top: 310px;
+}
+
+#krautStorage {
+    margin-left: 35px;
+    margin-top: 370px;
+}
+
+#peperoniStorage {
+    margin-left: 35px;
+    margin-top: 430px;
+}
+

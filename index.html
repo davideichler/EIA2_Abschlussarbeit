@@ -19,12 +19,12 @@
         <h2>Settings</h2>
             <fieldset class="fieldset" id="fsEmployee">
                 <legend>Anzahl Mitarbeiter:innen</legend>
-                <input type="number" id="nEmployee" name="nEmployee" min = "1" max = "5" step="1">
+                <input type="number" id="nEmployees" name="nEmployees" min = "1" max = "5" step="1">
             </fieldset>
 
-            <fieldset class="fieldset" id="fsCustomer">
+            <fieldset class="fieldset" id="fsCustomers">
                 <legend>Anzahl Kund:innen pro Zeit</legend>
-                <input type="number" id="nCustomer" name="nCustomer" min = "1" max = "10" step="1">
+                <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "10" step="1">
             </fieldset>
 
             <fieldset class="fieldset" id="fsStorageSize">
@@ -37,12 +37,45 @@
                 <label for="sizeLow">Gering</label>
             </fieldset>
 
+            
+
         <button type="button" id="startBtn">START</button>            
             
     </div>
 
-    <div id="mainContainer">
+    <div id="mainContainer" class="isHidden">
+
+        <span class="bar" id="salad"></span>
+        <span class="bar" id="onion"></span>
+        <span class="bar" id="corn"></span>
+        <span class="bar" id="tomato"></span>
+        <span class="bar" id="kraut"></span>
+        <span class="bar" id="peperoni"></span>
+
+        <div id="barMenu" class="isHidden">
+            <p id="ingredient">Tomate</p>
+            <p id="ingredientLevel">80%</p>
+            <button id="topIngredient">Belegen</button>
+        </div>
+
+        <span class="storage" id="saladStorage"></span>
+        <span class="storage" id="onionStorage"></span>
+        <span class="storage" id="cornStorage"></span>
+        <span class="storage" id="tomatoStorage"></span>
+        <span class="storage" id="krautStorage"></span>
+        <span class="storage" id="peperoniStorage"></span>
+
+        
+
+        <span class="extra" id="spicy"></span>
+        <span class="extra" id="feta"></span>
+
+
         <canvas width="900px" height="600px"></canvas>
+        
+
+
+
     </div>
 </body>
 </html>
