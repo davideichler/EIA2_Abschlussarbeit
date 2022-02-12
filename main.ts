@@ -67,7 +67,7 @@ namespace Abschlussarbeit {
         }
 
         canvas.addEventListener("click", hideBarMenu);
-
+        canvas.addEventListener("click", detectClick);
         
 
         drawShop();
@@ -75,6 +75,7 @@ namespace Abschlussarbeit {
 
         let testEmployee = new Employee(1);
         testEmployee.draw();
+        
     }
     
 
@@ -142,8 +143,12 @@ namespace Abschlussarbeit {
     }
 
  
-    function handleClick(_event: Event): void {
-        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
-        barMenu.classList.add("isHidden"); */
+    function detectClick(_event: MouseEvent): void {
+        let xClick: number = _event.clientX;
+        let yClick: number = _event.clientY;
+
+        if (xClick == Employee.position.x && yClick == Employee.position.y) {
+            Employee.getClicked();
+        }
     }
 }

@@ -5,8 +5,8 @@ namespace Abschlussarbeit {
         employeeNum: number;
         
         constructor(_employeeNum: number) {
-            super(new Vector(Math.floor(Math.random() * (170 - 400 + 1)), Math.floor(Math.random() * (140 - 580 + 1) + 580)));
-            this.mood = Math.floor(Math.random() * (-10 + 10 + 1) + (-10));
+            super(new Vector(Math.floor(Math.random() * (370 - 190 + 1) + 190), Math.floor(Math.random() * (560 - 140 + 1) + 140)));
+            this.mood = Math.floor(Math.random() * (10 - 20 + 1) + 10);
             console.log(this.mood);
             this.busy = false;
             this.selected = false;
@@ -43,8 +43,10 @@ namespace Abschlussarbeit {
             }
         }
 
-        public move(): void {
-
+        public move (_timeslice: number): void {
+            let offset: Vector = this.velocity.copy();
+            offset.scale(_timeslice);
+            this.position.add(offset);
         }
     }
 

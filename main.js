@@ -49,6 +49,7 @@ var Abschlussarbeit;
             i.addEventListener("click", callStorageMenu);
         }
         canvas.addEventListener("click", hideBarMenu);
+        canvas.addEventListener("click", detectClick);
         drawShop();
         background = Abschlussarbeit.crc2.getImageData(0, 0, Abschlussarbeit.crc2.canvas.width, Abschlussarbeit.crc2.canvas.height);
         let testEmployee = new Abschlussarbeit.Employee(1);
@@ -103,9 +104,12 @@ var Abschlussarbeit;
         let storageMenu = document.querySelector("#storageMenu");
         storageMenu.classList.add("isHidden");
     }
-    function handleClick(_event) {
-        /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
-        barMenu.classList.add("isHidden"); */
+    function detectClick(_event) {
+        let xClick = _event.clientX;
+        let yClick = _event.clientY;
+        if (xClick == Abschlussarbeit.Employee.position.x && yClick == Abschlussarbeit.Employee.position.y) {
+            Abschlussarbeit.Employee.getClicked();
+        }
     }
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=main.js.map

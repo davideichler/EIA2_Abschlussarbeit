@@ -16,6 +16,13 @@ var Abschlussarbeit;
             this.x *= _factor;
             this.y *= _factor;
         }
+        add(_addend) {
+            this.x += _addend.x;
+            this.y += _addend.y;
+        }
+        copy() {
+            return new Vector(this.x, this.y);
+        }
     }
     Abschlussarbeit.Vector = Vector;
 })(Abschlussarbeit || (Abschlussarbeit = {}));
