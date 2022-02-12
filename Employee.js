@@ -11,6 +11,9 @@ var Abschlussarbeit;
             this.employeeNum = _employeeNum;
             console.log(this.position);
         }
+        static getClicked() {
+            console.log("hey");
+        }
         draw() {
             if (this.mood <= 20 && this.mood >= -20) {
                 Abschlussarbeit.crc2.save();

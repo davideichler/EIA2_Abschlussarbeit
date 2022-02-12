@@ -1,6 +1,9 @@
 namespace Abschlussarbeit {
     export class Employee extends Human {
-        busy: boolean;
+        
+        static position: Vector;
+        
+        static busy: boolean;
         selected: boolean;
         employeeNum: number;
         
@@ -12,6 +15,9 @@ namespace Abschlussarbeit {
             this.selected = false;
             this.employeeNum = _employeeNum;
             console.log(this.position);
+        }
+        public static getClicked(): void {
+            console.log("hey");
         }
         
         public draw(): void {
@@ -47,7 +53,11 @@ namespace Abschlussarbeit {
             let offset: Vector = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
+
+            
         }
+
+        
     }
 
     
