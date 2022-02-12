@@ -59,6 +59,12 @@ namespace Abschlussarbeit {
                 prepareBtn.classList.add("isHidden");
             }
             prepareBtn.addEventListener("click", Salad.prepare);
+
+            let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
+            if (this.nStorage == this.storageSize) {
+                orderBtn.classList.add("isHidden");
+            }
+            orderBtn.addEventListener("click", Salad.orderIngredients);
         }
 
         static placeTopping(): void {
@@ -79,13 +85,13 @@ namespace Abschlussarbeit {
             pBar.id = "pBar";
             progress.appendChild(pBar); 
 
-            let neededFill: number = this.barSize - this.nBar;
-            let nPreperation: number = 
+            let neededFillAmount: number = this.barSize - this.nBar;
+            //let nPreperation: number = 
 
-            if (neededFill > this.nStorage) {
+            if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
             } else {
-                this.nStorage -= neededFill;
+                this.nStorage -= neededFillAmount;
             }
             
             let counter: number = 20;
@@ -115,7 +121,41 @@ namespace Abschlussarbeit {
 
         static fillBar(): void {
             
+        }
 
+        static orderIngredients(): void {
+
+            let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
+            let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
+            orderBtn.classList.add("isHidden");
+
+            let progress: HTMLDivElement = document.createElement("div");
+            progress.id = "progress2";
+            storageMenu.appendChild(progress);
+
+            let pBar: HTMLDivElement = document.createElement("div");
+            pBar.id = "pBar2";
+            progress.appendChild(pBar); 
+
+            let orderDuration: number = 50;
+            let counter: number = orderDuration;
+
+            const interval: number = setInterval((): void => {
+                //Pfeilfunktion genutzt, da sonst kein Zugriff auf this.XY möglich
+                console.log(counter);
+                counter--;
+
+                progress.style.width = "100px";
+                pBar.style.width = (counter / 50) * 100 + "%";
+
+                if (counter < 0) {
+                    clearInterval(interval);
+
+                    pBar.classList.add("isHidden");
+                    progress.classList.add("isHidden");
+                    this.nStorage = this.storageSize;
+                }
+             },                                  1000);
         }
     }    
 }

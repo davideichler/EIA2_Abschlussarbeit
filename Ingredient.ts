@@ -1,5 +1,5 @@
 namespace Abschlussarbeit {
-    export abstract class Ingredient {
+    export class Ingredient {
         public name: string;
         public storageSize: number;
         public nStorage: number;
@@ -19,7 +19,18 @@ namespace Abschlussarbeit {
         static showBarMenu(_event: MouseEvent): void {
             
         }
+
+        static showStorageMenu(_event: MouseEvent): void {
+
+        }
         
+        static topIngredient(): void {
+            
+        }
+
+        static prepare(): void {
+
+        }
     }
 
     

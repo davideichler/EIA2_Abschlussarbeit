@@ -39,6 +39,11 @@ var Abschlussarbeit;
                 prepareBtn.classList.add("isHidden");
             }
             prepareBtn.addEventListener("click", Salad.prepare);
+            let orderBtn = document.querySelector("#orderBtn");
+            if (this.nStorage == this.storageSize) {
+                orderBtn.classList.add("isHidden");
+            }
+            orderBtn.addEventListener("click", Salad.orderIngredients);
         }
         static placeTopping() {
         }
@@ -52,13 +57,13 @@ var Abschlussarbeit;
             let pBar = document.createElement("div");
             pBar.id = "pBar";
             progress.appendChild(pBar);
-            let neededFill = this.barSize - this.nBar;
-            let nPreperation = ;
-            if (neededFill > this.nStorage) {
+            let neededFillAmount = this.barSize - this.nBar;
+            //let nPreperation: number = 
+            if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
             }
             else {
-                this.nStorage -= neededFill;
+                this.nStorage -= neededFillAmount;
             }
             let counter = 20;
             const interval = setInterval(function () {
@@ -79,6 +84,32 @@ var Abschlussarbeit;
             }, 1000);
         }
         static fillBar() {
+        }
+        static orderIngredients() {
+            let storageMenu = document.querySelector("#storageMenu");
+            let orderBtn = document.querySelector("#orderBtn");
+            orderBtn.classList.add("isHidden");
+            let progress = document.createElement("div");
+            progress.id = "progress2";
+            storageMenu.appendChild(progress);
+            let pBar = document.createElement("div");
+            pBar.id = "pBar2";
+            progress.appendChild(pBar);
+            let orderDuration = 50;
+            let counter = orderDuration;
+            const interval = setInterval(() => {
+                //Pfeilfunktion genutzt, da sonst kein Zugriff auf this.XY möglich
+                console.log(counter);
+                counter--;
+                progress.style.width = "100px";
+                pBar.style.width = (counter / 50) * 100 + "%";
+                if (counter < 0) {
+                    clearInterval(interval);
+                    pBar.classList.add("isHidden");
+                    progress.classList.add("isHidden");
+                    this.nStorage = this.storageSize;
+                }
+            }, 1000);
         }
     }
     Salad.nBar = 25;

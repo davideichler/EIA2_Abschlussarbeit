@@ -7,6 +7,7 @@
     <title>Dönerbuden-Simulator</title>
     <link rel="stylesheet" href="style.css"> 
     <script src="Vector.js"></script>
+    <script src="Paths.js"></script>
     <script src="Human.js"></script>
     <script src="Employee.js"></script>
     <script src="Customer.js"></script>
@@ -38,8 +39,6 @@
                 <label for="sizeLow">Gering</label>
             </fieldset>
 
-            
-
         <button type="button" id="startBtn">START</button>            
             
     </div>
@@ -59,6 +58,19 @@
             <button id="topIngredient">Belegen</button>
         </div>
 
+        <span class="mainIngredient" id="classicKebab">
+            <span id="pike"></span>
+        </span>
+        <span class="mainIngredient" id="chickenKebab">
+            <span id="pikeChicken"></span>
+        </span>
+        <span class="mainIngredient" id="falafel">
+            <span id="fryHandler"></span>
+        </span>
+
+        <span class="bread" id="yufka"></span>
+        <span class="bread" id="doener"></span>
+
         <span class="storage" id="saladStorage"></span>
         <span class="storage" id="onionStorage"></span>
         <span class="storage" id="cornStorage"></span>
@@ -70,7 +82,7 @@
             <p id="ingredientNameStorage"></p>
             <p id="ingredientLevelStorage"></p>
             <button id="prepare">Zubereiten</button>
-            <button id="prepare">Nachbestellen</button>
+            <button id="orderBtn">Nachbestellen</button>
         </div>
 
         <span class="extra" id="spicy"></span>

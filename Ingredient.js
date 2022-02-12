@@ -11,6 +11,12 @@ var Abschlussarbeit;
         }
         static showBarMenu(_event) {
         }
+        static showStorageMenu(_event) {
+        }
+        static topIngredient() {
+        }
+        static prepare() {
+        }
     }
     Abschlussarbeit.Ingredient = Ingredient;
 })(Abschlussarbeit || (Abschlussarbeit = {}));

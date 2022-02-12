@@ -3,6 +3,7 @@ var Abschlussarbeit;
 (function (Abschlussarbeit) {
     window.addEventListener("load", handleLoad);
     console.log("Start");
+    let human = [];
     let nEmployees;
     let nCustomer;
     let stockCapacity;
@@ -50,6 +51,8 @@ var Abschlussarbeit;
         canvas.addEventListener("click", hideBarMenu);
         drawShop();
         background = Abschlussarbeit.crc2.getImageData(0, 0, Abschlussarbeit.crc2.canvas.width, Abschlussarbeit.crc2.canvas.height);
+        let testEmployee = new Abschlussarbeit.Employee(1);
+        testEmployee.draw();
     }
     function drawShop() {
         Abschlussarbeit.crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
@@ -74,9 +77,6 @@ var Abschlussarbeit;
         Abschlussarbeit.crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
         Abschlussarbeit.crc2.fillRect(890, 225, 15, 15);
         Abschlussarbeit.crc2.stroke();
-        /* crc2.save(),
-        crc2.translate(300, 20);
-        crc2.beginPath(); */
     }
     function callBarMenu(_event) {
         let target = _event.target.id;
@@ -100,6 +100,8 @@ var Abschlussarbeit;
     function hideBarMenu(_event) {
         let barMenu = document.querySelector("#barMenu");
         barMenu.classList.add("isHidden");
+        let storageMenu = document.querySelector("#storageMenu");
+        storageMenu.classList.add("isHidden");
     }
     function handleClick(_event) {
         /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;

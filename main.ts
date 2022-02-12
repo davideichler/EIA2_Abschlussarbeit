@@ -3,8 +3,11 @@ namespace Abschlussarbeit {
     window.addEventListener("load", handleLoad);
     console.log("Start");
 
+    let human: Human[] = [];
+
     let nEmployees: number;
     let nCustomer: number;
+
     let stockCapacity: string;
     export let stockFactor: number;
     
@@ -23,7 +26,6 @@ namespace Abschlussarbeit {
     }
 
     function handleChange(_event: Event): void {
-
         stockCapacity = document.querySelector('input[name="stockCapacity"]:checked')!.value;
         console.log(stockCapacity);
 
@@ -45,7 +47,6 @@ namespace Abschlussarbeit {
     }
     
     function createCanvas(): void {
-
         let form: HTMLFormElement = <HTMLFormElement> document.getElementById("form");
         form.classList.add("isHidden");
 
@@ -67,23 +68,25 @@ namespace Abschlussarbeit {
 
         canvas.addEventListener("click", hideBarMenu);
 
+        
+
         drawShop();
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
+
+        let testEmployee = new Employee(1);
+        testEmployee.draw();
     }
     
 
     function drawShop(): void {
-
         crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
 
-        
         crc2.rect(400, 20, 120, 500);
         crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
         crc2.fillRect(400, 20, 120, 500);
         crc2.stroke();
         
-
         crc2.rect(20, 20, 150, 550);
         crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
         crc2.fillRect(20, 20, 150, 550);
@@ -103,9 +106,6 @@ namespace Abschlussarbeit {
         crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
         crc2.fillRect(890, 225, 15, 15);
         crc2.stroke();
-        /* crc2.save(),
-        crc2.translate(300, 20);
-        crc2.beginPath(); */
     }
 
     function callBarMenu(_event: MouseEvent): void {
@@ -122,7 +122,6 @@ namespace Abschlussarbeit {
     }
 
     function callStorageMenu(_event: MouseEvent): void {
-        
         let target: EventTarget = _event!.target!.id!;
         console.log(target);
 
@@ -137,11 +136,12 @@ namespace Abschlussarbeit {
     function hideBarMenu(_event: MouseEvent): void {
         let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
         barMenu.classList.add("isHidden");
+
+        let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
+        storageMenu.classList.add("isHidden");
     }
 
-
-
-
+ 
     function handleClick(_event: Event): void {
         /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
         barMenu.classList.add("isHidden"); */
