@@ -57,9 +57,17 @@ namespace Abschlussarbeit {
             let offset: Vector = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
-            //if (this.selected == true && )
 
+            //if (this.selected == true && )
             
+            // this.velocity = new Vector (movePoint.x - this.position.x, movePoint.y - this.position.y);
+            // if (this.position.x == movePoint.x && this.position.y == movePoint.y) {
+            //     this.velocity = new Vector (0, 0);
+            // }
+            this.velocity = new Vector (movePointX - this.position.x, movePointY - this.position.y);
+            if (this.position.x == movePointX && this.position.y == movePointY) {
+                 this.velocity = new Vector (0, 0);
+            }
         }
 
         public getClicked(_xClick: number, _yClick: number): boolean {

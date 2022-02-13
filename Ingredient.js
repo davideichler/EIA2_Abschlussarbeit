@@ -2,7 +2,7 @@
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class Ingredient {
-        constructor(_name, _storageSize, _nStorage, _barSize, _nBar, _nUnits, _preperationTime) {
+        constructor(_name, _storageSize, _nStorage, _barSize, _nBar, _nUnits, _preperationTime, _barPosition, _storagePostition) {
             this.name = _name;
             this.storageSize = _storageSize;
             this.barSize = _barSize;
@@ -10,6 +10,8 @@ var Abschlussarbeit;
             this.preperationTime = _preperationTime;
             this.nBar = _nBar;
             this.nStorage = _nStorage;
+            this.barPosition = _barPosition;
+            this.storagePosition = _storagePostition;
         }
         showBarMenu(_event) {
             let barMenu = document.querySelector("#barMenu");
@@ -24,10 +26,12 @@ var Abschlussarbeit;
             let ingredientLevel = document.querySelector("#ingredientLevel");
             ingredientLevel.innerHTML = "Füllstand: " + percantageDisplay + "% " + "</br>" + this.nBar + "/" + this.barSize;
             let topIngredient = document.querySelector("#topIngredient");
-            topIngredient.addEventListener("click", Ingredient.placeTopping);
+            topIngredient.addEventListener("click", this.placeTopping);
             this.clicked = true;
         }
-        static placeTopping() {
+        placeTopping() {
+            Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(this.barPosition.x, this.barPosition.y);
+            console.log(Abschlussarbeit.movePoint);
         }
         showStorageMenu(_event) {
             let storageMenu = document.querySelector("#storageMenu");
@@ -43,18 +47,18 @@ var Abschlussarbeit;
             let ingredientLevelStorage = document.querySelector("#ingredientLevelStorage");
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
             let prepareBtn = document.querySelector("#prepare");
-            if (this.nStorage == 0 || employee[0].selected == false) {
+            if (this.nStorage == 0 || Abschlussarbeit.employees[0].selected == false) {
                 prepareBtn.classList.add("isHidden");
             }
-            else if (employee[0].selected == true) {
+            else if (Abschlussarbeit.employees[0].selected == true) {
                 prepareBtn.classList.remove("isHidden");
             }
             prepareBtn.addEventListener("click", this.prepare);
             let orderBtn = document.querySelector("#orderBtn");
-            if (this.nStorage == this.storageSize || employee[0].selected == false) {
+            if (this.nStorage == this.storageSize || Abschlussarbeit.employees[0].selected == false) {
                 orderBtn.classList.add("isHidden");
             }
-            else if (employee[0].selected == true) {
+            else if (Abschlussarbeit.employees[0].selected == true) {
                 orderBtn.classList.remove("isHidden");
             }
             orderBtn.addEventListener("click", this.orderIngredients);
@@ -64,6 +68,7 @@ var Abschlussarbeit;
         prepare() {
             //employee[0].move(1 / 50, employee[0].position.x, employee[0].position.y);
             console.log(this.preperationTime);
+            Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(this.storagePosition.x, this.storagePosition.y);
             let storageMenu = document.querySelector("#storageMenu");
             let prepareBtn = document.querySelector("#prepare");
             prepareBtn.classList.add("isHidden");

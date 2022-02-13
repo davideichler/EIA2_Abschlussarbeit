@@ -5,12 +5,15 @@ var Abschlussarbeit;
     console.log("Start");
     let human = [];
     Abschlussarbeit.employees = [];
-    let ingredients = [];
+    Abschlussarbeit.ingredients = [];
     let customers = [];
     let nEmployees;
     let nCustomer;
     let stockCapacity;
     let background;
+    Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(0, 0);
+    // export let movePointX: number;
+    // export let movePointY: number;
     // let stockCapacity: string;
     function handleLoad(_event) {
         let form = document.querySelector("#form");
@@ -58,13 +61,13 @@ var Abschlussarbeit;
         console.log(nEmployees);
         createCustomer(nCustomer);
         console.log(nCustomer);
-        let salad = new Abschlussarbeit.Ingredient("Salat", 100 * Abschlussarbeit.stockFactor, 100 * Abschlussarbeit.stockFactor, 25, 25, 2, 20);
+        let salad = new Abschlussarbeit.Ingredient("Salat", 100 * Abschlussarbeit.stockFactor, 100 * Abschlussarbeit.stockFactor, 25, 25, 2, 20, new Abschlussarbeit.Vector(350, 150), new Abschlussarbeit.Vector(150, 150));
         let onion = new Abschlussarbeit.Ingredient("Zwiebeln", 70 * Abschlussarbeit.stockFactor, 70 * Abschlussarbeit.stockFactor, 15, 15, 0.5, 30);
         let corn = new Abschlussarbeit.Ingredient("Mais", 1000 * Abschlussarbeit.stockFactor, 1000 * Abschlussarbeit.stockFactor, 300, 300, 30, 5);
         let tomato = new Abschlussarbeit.Ingredient("Tomate", 50 * Abschlussarbeit.stockFactor, 50 * Abschlussarbeit.stockFactor, 15, 15, 0.5, 15);
         let kraut = new Abschlussarbeit.Ingredient("Kraut", 150 * Abschlussarbeit.stockFactor, 150 * Abschlussarbeit.stockFactor, 50, 50, 12.5, 10);
         let peperoni = new Abschlussarbeit.Ingredient("Peperoni", 50 * Abschlussarbeit.stockFactor, 50 * Abschlussarbeit.stockFactor, 30, 30, 2, 5);
-        ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
+        Abschlussarbeit.ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
         /* let testEmployee = new Employee(1);
         testEmployee.draw();
         employee.push(testEmployee); */
@@ -87,44 +90,44 @@ var Abschlussarbeit;
         //VS Code meckert, aber es funktioniert
         console.log(target);
         if (target == "salad") {
-            ingredients[0].showBarMenu(_event);
+            Abschlussarbeit.ingredients[0].showBarMenu(_event);
         }
         else if (target == "onion") {
-            ingredients[1].showBarMenu(_event);
+            Abschlussarbeit.ingredients[1].showBarMenu(_event);
         }
         else if (target == "corn") {
-            ingredients[2].showBarMenu(_event);
+            Abschlussarbeit.ingredients[2].showBarMenu(_event);
         }
         else if (target == "tomato") {
-            ingredients[3].showBarMenu(_event);
+            Abschlussarbeit.ingredients[3].showBarMenu(_event);
         }
         else if (target == "kraut") {
-            ingredients[4].showBarMenu(_event);
+            Abschlussarbeit.ingredients[4].showBarMenu(_event);
         }
         else if (target == "peperoni") {
-            ingredients[5].showBarMenu(_event);
+            Abschlussarbeit.ingredients[5].showBarMenu(_event);
         }
     }
     function callStorageMenu(_event) {
         let target = _event.target.id;
         console.log(target);
         if (target == "saladStorage") {
-            ingredients[0].showStorageMenu(_event);
+            Abschlussarbeit.ingredients[0].showStorageMenu(_event);
         }
         else if (target == "onionStorage") {
-            ingredients[1].showStorageMenu(_event);
+            Abschlussarbeit.ingredients[1].showStorageMenu(_event);
         }
         else if (target == "cornStorage") {
-            ingredients[2].showStorageMenu(_event);
+            Abschlussarbeit.ingredients[2].showStorageMenu(_event);
         }
         else if (target == "tomatoStorage") {
-            ingredients[3].showStorageMenu(_event);
+            Abschlussarbeit.ingredients[3].showStorageMenu(_event);
         }
         else if (target == "krautStorage") {
-            ingredients[4].showStorageMenu(_event);
+            Abschlussarbeit.ingredients[4].showStorageMenu(_event);
         }
         else if (target == "peperoniStorage") {
-            ingredients[5].showStorageMenu(_event);
+            Abschlussarbeit.ingredients[5].showStorageMenu(_event);
         }
     }
     function hideMenus(_event) {
@@ -149,6 +152,7 @@ var Abschlussarbeit;
         //employee.draw();
         for (let a of Abschlussarbeit.employees) {
             a.move(1 / 50);
+            Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(a.position.x, a.position.y);
             a.draw();
         }
         for (let a of customers) {

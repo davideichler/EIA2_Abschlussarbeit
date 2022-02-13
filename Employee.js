@@ -53,6 +53,14 @@ var Abschlussarbeit;
             offset.scale(_timeslice);
             this.position.add(offset);
             //if (this.selected == true && )
+            // this.velocity = new Vector (movePoint.x - this.position.x, movePoint.y - this.position.y);
+            // if (this.position.x == movePoint.x && this.position.y == movePoint.y) {
+            //     this.velocity = new Vector (0, 0);
+            // }
+            this.velocity = new Abschlussarbeit.Vector(movePointX - this.position.x, movePointY - this.position.y);
+            if (this.position.x == movePointX && this.position.y == movePointY) {
+                this.velocity = new Abschlussarbeit.Vector(0, 0);
+            }
         }
         getClicked(_xClick, _yClick) {
             let distance = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))

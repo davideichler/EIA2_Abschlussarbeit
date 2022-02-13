@@ -5,7 +5,7 @@ namespace Abschlussarbeit {
 
     let human: Human[] = [];
     export let employees: Employee[] = [];
-    let ingredients: Ingredient[] = [];
+    export let ingredients: Ingredient[] = [];
     let customers: Customer[] = [];
 
     let nEmployees: number;
@@ -17,6 +17,10 @@ namespace Abschlussarbeit {
     export let crc2: CanvasRenderingContext2D;
     
     let background: ImageData;
+
+    export let movePoint: Vector = new Vector (0, 0);
+    // export let movePointX: number;
+    // export let movePointY: number;
    // let stockCapacity: string;
 
     function handleLoad(_event: Event): void {
@@ -80,7 +84,7 @@ namespace Abschlussarbeit {
         createCustomer(nCustomer);
         console.log(nCustomer);
 
-        let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20);
+        let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20, new Vector (350, 150), new Vector (150, 150));
         let onion: Ingredient = new Ingredient("Zwiebeln", 70 * stockFactor, 70 * stockFactor, 15, 15, 0.5, 30);
         let corn: Ingredient = new Ingredient("Mais", 1000 * stockFactor, 1000 * stockFactor, 300, 300, 30, 5);
         let tomato: Ingredient = new Ingredient("Tomate", 50 * stockFactor, 50 * stockFactor, 15, 15, 0.5, 15);
@@ -179,6 +183,7 @@ namespace Abschlussarbeit {
 
         for (let a of employees) {
             a.move(1 / 50);
+            movePoint = new Vector(a.position.x, a.position.y);
             a.draw();
         }
 

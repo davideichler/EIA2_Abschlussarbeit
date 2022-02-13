@@ -17,8 +17,10 @@ namespace Abschlussarbeit {
         public nUnits: number;
         public preperationTime: number;
         public clicked: boolean;
+        public storagePosition: Vector;
+        public barPosition: Vector;
         
-        constructor(_name: string, _storageSize: number, _nStorage: number, _barSize: number, _nBar: number, _nUnits: number, _preperationTime: number) {
+        constructor(_name: string, _storageSize: number, _nStorage: number, _barSize: number, _nBar: number, _nUnits: number, _preperationTime: number, _barPosition: Vector, _storagePostition: Vector) {
             this.name = _name;
             this.storageSize = _storageSize;
             this.barSize = _barSize;
@@ -26,6 +28,8 @@ namespace Abschlussarbeit {
             this.preperationTime = _preperationTime;
             this.nBar = _nBar;
             this.nStorage = _nStorage;
+            this.barPosition = _barPosition;
+            this.storagePosition = _storagePostition;            
         }
 
         showBarMenu(_event: MouseEvent): void {
@@ -47,13 +51,14 @@ namespace Abschlussarbeit {
             ingredientLevel.innerHTML = "Füllstand: " + percantageDisplay + "% " + "</br>" + this.nBar + "/" + this.barSize;
 
             let topIngredient: HTMLButtonElement = document.querySelector("#topIngredient")!;
-            topIngredient.addEventListener("click", Ingredient.placeTopping);
+            topIngredient.addEventListener("click", this.placeTopping);
 
             this.clicked = true;
         }
 
-        static placeTopping(): void {
-
+        placeTopping(): void {
+            movePoint = new Vector (this.barPosition.x, this.barPosition.y);
+            console.log(movePoint);
         }
 
         showStorageMenu(_event: MouseEvent): void {
@@ -76,17 +81,17 @@ namespace Abschlussarbeit {
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
 
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
-            if (this.nStorage == 0 || employee[0].selected == false) {
+            if (this.nStorage == 0 || employees[0].selected == false) {
                 prepareBtn.classList.add("isHidden");
-            } else if (employee[0].selected == true) {
+            } else if (employees[0].selected == true) {
                 prepareBtn.classList.remove("isHidden");
             } 
             prepareBtn.addEventListener("click", this.prepare);
 
             let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
-            if (this.nStorage == this.storageSize || employee[0].selected == false) {
+            if (this.nStorage == this.storageSize || employees[0].selected == false) {
                 orderBtn.classList.add("isHidden");
-            } else if (employee[0].selected == true) {
+            } else if (employees[0].selected == true) {
                 orderBtn.classList.remove("isHidden");
             } 
 
@@ -100,6 +105,7 @@ namespace Abschlussarbeit {
         prepare(): void {
             //employee[0].move(1 / 50, employee[0].position.x, employee[0].position.y);
             console.log(this.preperationTime);
+            movePoint = new Vector (this.storagePosition.x, this.storagePosition.y);
             
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
