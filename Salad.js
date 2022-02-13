@@ -65,6 +65,7 @@ var Abschlussarbeit;
             else {
                 this.nStorage -= neededFillAmount;
             }
+            Abschlussarbeit.Employee.busy = true;
             let counter = 20;
             const interval = setInterval(function () {
                 console.log(counter);
@@ -73,6 +74,7 @@ var Abschlussarbeit;
                 pBar.style.width = (counter / 20) * 100 + "%";
                 if (counter < 0) {
                     clearInterval(interval);
+                    Abschlussarbeit.Employee.busy = false;
                     pBar.classList.add("isHidden");
                     progress.classList.add("isHidden");
                     let fillBar = document.createElement("button");

@@ -13,7 +13,7 @@ namespace Abschlussarbeit {
         }
 
         placeOrder(): void {
-            breadArray[]
+            
         }
     }
 }

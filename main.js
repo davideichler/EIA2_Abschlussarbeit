@@ -107,9 +107,13 @@ var Abschlussarbeit;
     function detectClick(_event) {
         let xClick = _event.clientX;
         let yClick = _event.clientY;
-        if (xClick == Abschlussarbeit.Employee.position.x && yClick == Abschlussarbeit.Employee.position.y) {
-            Abschlussarbeit.Employee.getClicked();
-        }
+        getClicked(xClick, yClick);
+    }
+    function getClicked(_xClick, _yClick) {
+        let distance = Math.sqrt(((_xClick - Abschlussarbeit.Employee.position.x) * (_xClick - Abschlussarbeit.Employee.position.x))
+            +
+                ((_yClick - Abschlussarbeit.Employee.position.y) * (_yClick - Abschlussarbeit.Employee.position.y)));
+        console.log(distance);
     }
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=main.js.map

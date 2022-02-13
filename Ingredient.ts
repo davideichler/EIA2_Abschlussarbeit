@@ -8,6 +8,12 @@ namespace Abschlussarbeit {
         public nUnits: number;
         public preperationTime: number;
 
+        public breadArray: string[] = ["Yufka", "Döner"];
+        mainIngridientArray: string[] = ["Normalen", "Hähnchen", "Falafel"];
+        ingredientArray: string[] = ["Salat", "Tomate", "Zwiebeln", "Mais", "Kraut", "Peperoni"];
+        extrasArray: string[] = ["extra scharf", "mit Feta"];
+
+
         constructor(_name: string, _storageSize: number, _nStorage: number, _barSize: number, _nBar: number, _nUnits: number, _preperationTime: number) {
             this.name = _name;
             this.storageSize = _storageSize;

@@ -1,9 +1,10 @@
 namespace Abschlussarbeit {
     export class Employee extends Human {
-        
+                
         static position: Vector;
-        
         static busy: boolean;
+        
+        busy: boolean;
         selected: boolean;
         employeeNum: number;
         
@@ -16,10 +17,16 @@ namespace Abschlussarbeit {
             this.employeeNum = _employeeNum;
             console.log(this.position);
         }
-        public static getClicked(): void {
-            console.log("hey");
+
+        public static getClicked(_xClick: number, _yClick: number): void {
+            console.log(this.position);
+            let distance: number =
+            Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
+            +
+            ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
+            console.log(distance);
         }
-        
+                
         public draw(): void {
             if (this.mood <= 20 && this.mood >= -20) {
                 crc2.save();

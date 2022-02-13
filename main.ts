@@ -146,9 +146,15 @@ namespace Abschlussarbeit {
     function detectClick(_event: MouseEvent): void {
         let xClick: number = _event.clientX;
         let yClick: number = _event.clientY;
+        getClicked(xClick, yClick);
+        
+    }
 
-        if (xClick == Employee.position.x && yClick == Employee.position.y) {
-            Employee.getClicked();
-        }
+    function getClicked(_xClick: number, _yClick: number): void {
+        let distance: number =
+        Math.sqrt(( (_xClick - Employee.position.x) * (_xClick - Employee.position.x) )
+        +
+        ( (_yClick - Employee.position.y) * (_yClick - Employee.position.y) ));
+        console.log(distance);
     }
 }

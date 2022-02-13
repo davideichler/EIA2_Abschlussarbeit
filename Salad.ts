@@ -72,7 +72,6 @@ namespace Abschlussarbeit {
         }
         
         static prepare(): void {
-
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
             prepareBtn.classList.add("isHidden");
@@ -94,6 +93,8 @@ namespace Abschlussarbeit {
                 this.nStorage -= neededFillAmount;
             }
             
+            Employee.busy = true;
+
             let counter: number = 20;
 
             const interval: number = setInterval(function(): void {
@@ -106,6 +107,8 @@ namespace Abschlussarbeit {
                 if (counter < 0) {
                     clearInterval(interval);
 
+                    Employee.busy = false;
+                    
                     pBar.classList.add("isHidden");
                     progress.classList.add("isHidden");
                     let fillBar: HTMLButtonElement = document.createElement("button");

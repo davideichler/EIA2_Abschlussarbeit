@@ -7,7 +7,6 @@ var Abschlussarbeit;
         move(_timeslice) {
         }
         placeOrder() {
-            breadArray[];
         }
     }
     Abschlussarbeit.Customer = Customer;
