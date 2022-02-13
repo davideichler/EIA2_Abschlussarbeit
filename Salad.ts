@@ -1,5 +1,5 @@
 namespace Abschlussarbeit {
-    export class Salad extends Ingredient {
+   /*  export class Salad extends Ingredient {
 
         static nBar: number = 25;
         static barSize: number = 25;
@@ -14,8 +14,9 @@ namespace Abschlussarbeit {
             Salad.clicked = false;
         }
 
-        /* static showBarMenu(_event: MouseEvent): void {
-            let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
+        static showBarMenu(_event: MouseEvent): void {
+            //Ingredient.showBarMenu();
+            /* let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
             barMenu.classList.remove("isHidden");
 
             let x: number = _event.clientX;
@@ -37,10 +38,10 @@ namespace Abschlussarbeit {
             topIngredient.addEventListener("click", Salad.placeTopping);
             
             Salad.clicked = true;
-            console.log("salat" + this.clicked);
-        } */
+            console.log("salat" + this.clicked); */
+        }
 
-        static showStorageMenu(_event: MouseEvent): void {
+        /* static showStorageMenu(_event: MouseEvent): void {
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             storageMenu.classList.remove("isHidden");
 
@@ -70,9 +71,9 @@ namespace Abschlussarbeit {
                 orderBtn.classList.add("isHidden");
             }
             orderBtn.addEventListener("click", Salad.orderIngredients);
-        }
+        } */
 
-        static placeTopping(): void {
+     /*    static placeTopping(): void {
 
         }
         
@@ -129,9 +130,9 @@ namespace Abschlussarbeit {
 
         static fillBar(): void {
             
-        }
+        } */
 
-        static orderIngredients(): void {
+        /* static orderIngredients(): void {
 
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
@@ -164,6 +165,6 @@ namespace Abschlussarbeit {
                     this.nStorage = this.storageSize;
                 }
              },                                  1000);
-        }
-    }    
-}
+        } */
+      
+ 

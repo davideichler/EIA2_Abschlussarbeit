@@ -12,5 +12,6 @@ namespace Abschlussarbeit {
 
         public abstract draw (): void;
         public abstract move (_timeslice: number): void;
+
     }
 }

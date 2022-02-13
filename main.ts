@@ -4,8 +4,9 @@ namespace Abschlussarbeit {
     console.log("Start");
 
     let human: Human[] = [];
-    export let employee: Employee[] = [];
+    export let employees: Employee[] = [];
     let ingredients: Ingredient[] = [];
+    let customers: Customer[] = [];
 
     let nEmployees: number;
     let nCustomer: number;
@@ -41,9 +42,10 @@ namespace Abschlussarbeit {
 
         console.log(stockFactor);
 
-        nEmployees = document.querySelector("#nEmployees")!.value;
-        console.log(nEmployees);
-        // Zuordnung aller Variablen 
+        nEmployees = Number(document.querySelector("#nEmployees")!.value);
+        nCustomer = Number(document.querySelector("#nCustomers")!.value);
+        console.log(nCustomer);
+
     }
     
     function createCanvas(): void {
@@ -69,23 +71,44 @@ namespace Abschlussarbeit {
         canvas.addEventListener("click", hideMenus);
         canvas.addEventListener("click", detectClick);
         
-
         drawShop();
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
 
+        createEmployees(nEmployees);
+        console.log(nEmployees);
+
+        createCustomer(nCustomer);
+        console.log(nCustomer);
+
         let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20);
         let onion: Ingredient = new Ingredient("Zwiebeln", 70 * stockFactor, 70 * stockFactor, 15, 15, 0.5, 30);
-        let corn: Ingredient
+        let corn: Ingredient = new Ingredient("Mais", 1000 * stockFactor, 1000 * stockFactor, 300, 300, 30, 5);
+        let tomato: Ingredient = new Ingredient("Tomate", 50 * stockFactor, 50 * stockFactor, 15, 15, 0.5, 15);
+        let kraut: Ingredient = new Ingredient("Kraut", 150 * stockFactor, 150 * stockFactor, 50, 50, 12.5, 10);
+        let peperoni: Ingredient = new Ingredient("Peperoni", 50 * stockFactor, 50 * stockFactor, 30, 30, 2, 5);
 
-        ingredients.push(salad, onion);
+        ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
 
-        let testEmployee = new Employee(1);
+        /* let testEmployee = new Employee(1);
         testEmployee.draw();
-        employee.push(testEmployee);
+        employee.push(testEmployee); */
         
         window.setInterval(update, 50);
     }
 
+    function createEmployees(_nEmployees: number): void {
+        for (let i: number = 0; i < _nEmployees; i++) {
+            let newEmployee: Employee = new Employee (i);
+            employees.push(newEmployee);
+        }
+    }
+
+    function createCustomer (_nCustomer: number): void {
+        for (let i: number = 0; i < _nCustomer; i++) {
+            let newCustomer: Customer = new Customer (i);
+            customers.push(newCustomer);
+        }
+    }
     function callBarMenu(_event: MouseEvent): void {
         let target: EventTarget = _event!.target!.id!;
         //VS Code meckert, aber es funktioniert
@@ -93,10 +116,17 @@ namespace Abschlussarbeit {
 
         if (target == "salad") {
             ingredients[0].showBarMenu(_event);
-        } else {
-            
-        }
-       
+        } else if (target == "onion") {
+            ingredients[1].showBarMenu(_event);
+        } else if (target == "corn") {
+            ingredients[2].showBarMenu(_event);
+        } else if (target == "tomato") {
+            ingredients[3].showBarMenu(_event);
+        } else if (target == "kraut") {
+            ingredients[4].showBarMenu(_event);
+        } else if (target == "peperoni") {
+            ingredients[5].showBarMenu(_event);
+        } 
     }
 
     function callStorageMenu(_event: MouseEvent): void {
@@ -104,10 +134,18 @@ namespace Abschlussarbeit {
         console.log(target);
 
         if (target == "saladStorage") {
-            Ingredient.showStorageMenu(_event);
-        } else {
-            
-        }
+            ingredients[0].showStorageMenu(_event);
+        } else if (target == "onionStorage") {
+            ingredients[1].showStorageMenu(_event);
+        } else if (target == "cornStorage") {
+            ingredients[2].showStorageMenu(_event);
+        } else if (target == "tomatoStorage") {
+            ingredients[3].showStorageMenu(_event);
+        } else if (target == "krautStorage") {
+            ingredients[4].showStorageMenu(_event);
+        } else if (target == "peperoniStorage") {
+            ingredients[5].showStorageMenu(_event);
+        } 
 
     }
 
@@ -118,21 +156,36 @@ namespace Abschlussarbeit {
         let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
         storageMenu.classList.add("isHidden");
 
-        Salad.clicked = false;
-        console.log("ingr " + Ingredient.clicked);
-        console.log("salat" + Salad.clicked);
+        Ingredient.clicked = false;
+        console.log("ingr " + Ingredient.clicked);  
     }
 
  
     function detectClick(_event: MouseEvent): void {
         let xClick: number = _event.clientX;
         let yClick: number = _event.clientY;
-        //console.log(employee[0].getClicked(xClick, yClick));
+        //console.log(employee[].getClicked(xClick, yClick));
+        console.log(
+        for (let b of employees) {
+            b.getClicked(xClick, yClick);
+        }
+            
+
     }
 
     function update(): void {
         crc2.putImageData(background, 0, 0);
-        employee[0].draw();
+        //employee.draw();
+
+        for (let a of employees) {
+            a.move(1 / 50);
+            a.draw();
+        }
+
+        for (let a of customers) {
+            a.draw();
+            a.move(1 / 50);
+        }
     }
 
 

@@ -10,12 +10,11 @@ namespace Abschlussarbeit {
         
         constructor(_employeeNum: number) {
             super(new Vector(Math.floor(Math.random() * (370 - 190 + 1) + 190), Math.floor(Math.random() * (560 - 140 + 1) + 140)));
-            this.mood = Math.floor(Math.random() * (10 - 20 + 1) + 10);
-            console.log(this.mood);
+            this.mood = Math.floor(Math.random() * (10 - 20 + 1) - 10);
             this.busy = false;
             this.selected = false;
             this.employeeNum = _employeeNum;
-            console.log(this.position);
+            this.velocity = new Vector (0, 0);
         }
                 
         public draw(): void {
@@ -58,6 +57,9 @@ namespace Abschlussarbeit {
             let offset: Vector = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
+            //if (this.selected == true && )
+
+            
         }
 
         public getClicked(_xClick: number, _yClick: number): boolean {

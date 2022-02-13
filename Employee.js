@@ -4,12 +4,11 @@ var Abschlussarbeit;
     class Employee extends Abschlussarbeit.Human {
         constructor(_employeeNum) {
             super(new Abschlussarbeit.Vector(Math.floor(Math.random() * (370 - 190 + 1) + 190), Math.floor(Math.random() * (560 - 140 + 1) + 140)));
-            this.mood = Math.floor(Math.random() * (10 - 20 + 1) + 10);
-            console.log(this.mood);
+            this.mood = Math.floor(Math.random() * (10 - 20 + 1) - 10);
             this.busy = false;
             this.selected = false;
             this.employeeNum = _employeeNum;
-            console.log(this.position);
+            this.velocity = new Abschlussarbeit.Vector(0, 0);
         }
         draw() {
             if (this.mood <= 20 && this.mood >= -20) {
@@ -53,6 +52,7 @@ var Abschlussarbeit;
             let offset = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
+            //if (this.selected == true && )
         }
         getClicked(_xClick, _yClick) {
             let distance = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
