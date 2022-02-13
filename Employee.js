@@ -12,7 +12,6 @@ var Abschlussarbeit;
             console.log(this.position);
         }
         static getClicked(_xClick, _yClick) {
-            console.log(this.position);
             let distance = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
                 +
                     ((_yClick - this.position.y) * (_yClick - this.position.y)));

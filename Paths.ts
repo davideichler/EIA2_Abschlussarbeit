@@ -2,6 +2,35 @@ namespace Abschlussarbeit {
     export let employeePaths: Path2D;
     export let customerPaths: Path2D;
 
+    export function drawShop(): void {
+        crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
+        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+
+        crc2.rect(400, 20, 120, 500);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(400, 20, 120, 500);
+        crc2.stroke();
+        
+        crc2.rect(20, 20, 150, 550);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(20, 20, 150, 550);
+        crc2.stroke();
+
+        crc2.rect(170, 20, 230, 100);
+        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
+        crc2.fillRect(170, 20, 230, 100);
+        crc2.stroke();
+
+        crc2.rect(890, 150, 15, 15);
+        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
+        crc2.fillRect(890, 150, 15, 15);
+        crc2.stroke();
+
+        crc2.rect(890, 225, 15, 15);
+        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
+        crc2.fillRect(890, 225, 15, 15);
+        crc2.stroke();
+    }
     export function drawHappyEmployee(): void {
         crc2.beginPath();
         crc2.arc(0, 0, 25, 0, 2 * Math.PI);

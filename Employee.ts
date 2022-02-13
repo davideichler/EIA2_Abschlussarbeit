@@ -19,7 +19,6 @@ namespace Abschlussarbeit {
         }
 
         public static getClicked(_xClick: number, _yClick: number): void {
-            console.log(this.position);
             let distance: number =
             Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
             +

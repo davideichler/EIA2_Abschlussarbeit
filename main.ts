@@ -77,37 +77,6 @@ namespace Abschlussarbeit {
         testEmployee.draw();
         
     }
-    
-
-    function drawShop(): void {
-        crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-
-        crc2.rect(400, 20, 120, 500);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(400, 20, 120, 500);
-        crc2.stroke();
-        
-        crc2.rect(20, 20, 150, 550);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(20, 20, 150, 550);
-        crc2.stroke();
-
-        crc2.rect(170, 20, 230, 100);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(170, 20, 230, 100);
-        crc2.stroke();
-
-        crc2.rect(890, 150, 15, 15);
-        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        crc2.fillRect(890, 150, 15, 15);
-        crc2.stroke();
-
-        crc2.rect(890, 225, 15, 15);
-        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        crc2.fillRect(890, 225, 15, 15);
-        crc2.stroke();
-    }
 
     function callBarMenu(_event: MouseEvent): void {
         let target: EventTarget = _event!.target!.id!;
@@ -144,17 +113,12 @@ namespace Abschlussarbeit {
 
  
     function detectClick(_event: MouseEvent): void {
+        console.log("detect");
         let xClick: number = _event.clientX;
         let yClick: number = _event.clientY;
-        getClicked(xClick, yClick);
+        Employee.getClicked(xClick, yClick);
         
     }
 
-    function getClicked(_xClick: number, _yClick: number): void {
-        let distance: number =
-        Math.sqrt(( (_xClick - Employee.position.x) * (_xClick - Employee.position.x) )
-        +
-        ( (_yClick - Employee.position.y) * (_yClick - Employee.position.y) ));
-        console.log(distance);
-    }
+    
 }
