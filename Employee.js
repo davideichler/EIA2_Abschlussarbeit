@@ -11,12 +11,6 @@ var Abschlussarbeit;
             this.employeeNum = _employeeNum;
             console.log(this.position);
         }
-        static getClicked(_xClick, _yClick) {
-            let distance = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
-                +
-                    ((_yClick - this.position.y) * (_yClick - this.position.y)));
-            console.log(distance);
-        }
         draw() {
             if (this.mood <= 20 && this.mood >= -20) {
                 Abschlussarbeit.crc2.save();
@@ -48,11 +42,30 @@ var Abschlussarbeit;
                 Abschlussarbeit.drawUnderchallengedEmployee();
                 Abschlussarbeit.crc2.restore();
             }
+            if (this.selected == true) {
+                Abschlussarbeit.crc2.save();
+                Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
+                Abschlussarbeit.drawHighlight();
+                Abschlussarbeit.crc2.restore();
+            }
         }
         move(_timeslice) {
             let offset = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
+        }
+        getClicked(_xClick, _yClick) {
+            let distance = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
+                +
+                    ((_yClick - this.position.y) * (_yClick - this.position.y)));
+            console.log(distance);
+            if (distance < 30) {
+                this.selected = true;
+                return true;
+            }
+            else
+                this.selected = false;
+            return false;
         }
     }
     Abschlussarbeit.Employee = Employee;

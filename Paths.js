@@ -211,5 +211,15 @@ var Abschlussarbeit;
         Abschlussarbeit.crc2.closePath();
     }
     Abschlussarbeit.drawAngryCustomer = drawAngryCustomer;
+    function drawHighlight() {
+        Abschlussarbeit.crc2.beginPath();
+        Abschlussarbeit.crc2.moveTo(Abschlussarbeit.employee[0].position.x, Abschlussarbeit.employee[0].position.y - 25);
+        Abschlussarbeit.crc2.rect(-20, -35, 40, 8);
+        Abschlussarbeit.crc2.strokeStyle = "red";
+        Abschlussarbeit.crc2.lineWidth = 3;
+        Abschlussarbeit.crc2.stroke();
+        Abschlussarbeit.crc2.closePath();
+    }
+    Abschlussarbeit.drawHighlight = drawHighlight;
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Paths.js.map

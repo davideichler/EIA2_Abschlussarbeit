@@ -17,14 +17,6 @@ namespace Abschlussarbeit {
             this.employeeNum = _employeeNum;
             console.log(this.position);
         }
-
-        public static getClicked(_xClick: number, _yClick: number): void {
-            let distance: number =
-            Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
-            +
-            ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
-            console.log(distance);
-        }
                 
         public draw(): void {
             if (this.mood <= 20 && this.mood >= -20) {
@@ -53,15 +45,46 @@ namespace Abschlussarbeit {
                 drawUnderchallengedEmployee();
                 crc2.restore();
             }
+
+            if (this.selected == true) {
+                crc2.save();
+                crc2.translate(this.position.x, this.position.y);
+                drawHighlight();
+                crc2.restore();
+            }
         }
 
         public move (_timeslice: number): void {
             let offset: Vector = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
-
-            
         }
+
+        public getClicked(_xClick: number, _yClick: number): boolean {
+            let distance: number =
+            Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
+            +
+            ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
+            console.log(distance);
+
+            if (distance < 30) {
+                this.selected = true;
+                return true;
+            }  else 
+            this.selected = false;
+            return false;
+        }
+
+        /* public highlightEmployee(): void {
+            console.log("highlight");
+            crc2.beginPath();
+            crc2.moveTo(this.position.x, this.position.y - 25);
+            crc2.rect(-20, -35, 40, 8);  
+            crc2.fillStyle = "red";
+            crc2.stroke();
+            crc2.closePath();
+
+        } */
 
         
     }

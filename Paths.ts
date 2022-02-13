@@ -31,6 +31,7 @@ namespace Abschlussarbeit {
         crc2.fillRect(890, 225, 15, 15);
         crc2.stroke();
     }
+
     export function drawHappyEmployee(): void {
         crc2.beginPath();
         crc2.arc(0, 0, 25, 0, 2 * Math.PI);
@@ -130,8 +131,8 @@ namespace Abschlussarbeit {
         crc2.rect(-20, -35, 40, 8);  
         crc2.stroke();
         crc2.closePath();
-    }
 
+    }
 
     export function drawExcitedCustomer(): void {
         crc2.beginPath();
@@ -214,6 +215,16 @@ namespace Abschlussarbeit {
         crc2.lineTo(-6, -15);
         crc2.moveTo(6, -15);
         crc2.lineTo(12, -20);
+        crc2.stroke();
+        crc2.closePath();
+    }
+
+    export function drawHighlight(): void {
+        crc2.beginPath();
+        crc2.moveTo(employee[0].position.x, employee[0].position.y - 25);
+        crc2.rect(-20, -35, 40, 8);  
+        crc2.strokeStyle = "red";
+        crc2.lineWidth = 3;
         crc2.stroke();
         crc2.closePath();
     }

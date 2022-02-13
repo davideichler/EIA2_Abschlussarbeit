@@ -6,13 +6,15 @@ namespace Abschlussarbeit {
         static nStorage: number = 100 * stockFactor;
         static storageSize: number = 100 * stockFactor;
         static preperationTime: number = 20;
+        static clicked: boolean; 
 
                 
         constructor() {
             super("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20);
+            Salad.clicked = false;
         }
 
-        static showBarMenu(_event: MouseEvent): void {
+        /* static showBarMenu(_event: MouseEvent): void {
             let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
             barMenu.classList.remove("isHidden");
 
@@ -26,14 +28,17 @@ namespace Abschlussarbeit {
             ingredientName.innerHTML = "Salat";
 
             let percantageDisplay: number = (this.nBar / this.barSize) * 100;
-            console.log(percantageDisplay);
+            //console.log(percantageDisplay);
 
             let ingredientLevel: HTMLParagraphElement = document.querySelector("#ingredientLevel")!;
             ingredientLevel.innerHTML = "Füllstand: " + percantageDisplay + "% " + this.nBar + "/" + this.barSize;
 
             let topIngredient: HTMLButtonElement = document.querySelector("#topIngredient")!;
             topIngredient.addEventListener("click", Salad.placeTopping);
-        }
+            
+            Salad.clicked = true;
+            console.log("salat" + this.clicked);
+        } */
 
         static showStorageMenu(_event: MouseEvent): void {
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;

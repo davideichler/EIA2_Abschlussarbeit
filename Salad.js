@@ -4,23 +4,33 @@ var Abschlussarbeit;
     class Salad extends Abschlussarbeit.Ingredient {
         constructor() {
             super("Salat", 100 * Abschlussarbeit.stockFactor, 100 * Abschlussarbeit.stockFactor, 25, 25, 2, 20);
+            Salad.clicked = false;
         }
-        static showBarMenu(_event) {
-            let barMenu = document.querySelector("#barMenu");
+        /* static showBarMenu(_event: MouseEvent): void {
+            let barMenu: HTMLDivElement = document.querySelector("#barMenu")!;
             barMenu.classList.remove("isHidden");
-            let x = _event.clientX;
-            let y = _event.clientY;
+
+            let x: number = _event.clientX;
+            let y: number = _event.clientY;
+
             barMenu.style.marginLeft = x + 20 + "px";
             barMenu.style.marginTop = y + -50 + "px";
-            let ingredientName = document.querySelector("#ingredientName");
+        
+            let ingredientName: HTMLParagraphElement = document.querySelector("#ingredientName")!;
             ingredientName.innerHTML = "Salat";
-            let percantageDisplay = (this.nBar / this.barSize) * 100;
-            console.log(percantageDisplay);
-            let ingredientLevel = document.querySelector("#ingredientLevel");
+
+            let percantageDisplay: number = (this.nBar / this.barSize) * 100;
+            //console.log(percantageDisplay);
+
+            let ingredientLevel: HTMLParagraphElement = document.querySelector("#ingredientLevel")!;
             ingredientLevel.innerHTML = "Füllstand: " + percantageDisplay + "% " + this.nBar + "/" + this.barSize;
-            let topIngredient = document.querySelector("#topIngredient");
+
+            let topIngredient: HTMLButtonElement = document.querySelector("#topIngredient")!;
             topIngredient.addEventListener("click", Salad.placeTopping);
-        }
+            
+            Salad.clicked = true;
+            console.log("salat" + this.clicked);
+        } */
         static showStorageMenu(_event) {
             let storageMenu = document.querySelector("#storageMenu");
             storageMenu.classList.remove("isHidden");
