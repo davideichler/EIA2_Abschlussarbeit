@@ -17,10 +17,14 @@ namespace Abschlussarbeit {
         public nUnits: number;
         public preperationTime: number;
         public clicked: boolean;
+        public barPositionX: number;
+        public barPositionY: number;
+        public storagePositionX: number;
+        public storagePositionY: number;
         public storagePosition: Vector;
         public barPosition: Vector;
         
-        constructor(_name: string, _storageSize: number, _nStorage: number, _barSize: number, _nBar: number, _nUnits: number, _preperationTime: number, _barPosition: Vector, _storagePostition: Vector) {
+        constructor(_name: string, _storageSize: number, _nStorage: number, _barSize: number, _nBar: number, _nUnits: number, _preperationTime: number, _barPositionX: number, _barPositionY: number, _storagePositionX: number, _storagePositionY: number) {
             this.name = _name;
             this.storageSize = _storageSize;
             this.barSize = _barSize;
@@ -28,8 +32,11 @@ namespace Abschlussarbeit {
             this.preperationTime = _preperationTime;
             this.nBar = _nBar;
             this.nStorage = _nStorage;
-            this.barPosition = _barPosition;
-            this.storagePosition = _storagePostition;            
+            this.barPositionX = _barPositionX;
+            this.barPositionY = _barPositionY;
+            this.storagePositionX = _storagePositionX;   
+            this.storagePositionY = _storagePositionY;    
+            console.log(this.storagePositionX);       
         }
 
         showBarMenu(_event: MouseEvent): void {
@@ -57,8 +64,7 @@ namespace Abschlussarbeit {
         }
 
         placeTopping(): void {
-            movePoint = new Vector (this.barPosition.x, this.barPosition.y);
-            console.log(movePoint);
+            //movePoint = new Vector (this.barPositionX, this.barPositionY);
         }
 
         showStorageMenu(_event: MouseEvent): void {
@@ -81,20 +87,20 @@ namespace Abschlussarbeit {
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
 
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
+            console.log(employees[0].selected);
             if (this.nStorage == 0 || employees[0].selected == false) {
                 prepareBtn.classList.add("isHidden");
             } else if (employees[0].selected == true) {
                 prepareBtn.classList.remove("isHidden");
-            } 
-            prepareBtn.addEventListener("click", this.prepare);
+                prepareBtn.addEventListener("click", this.prepare);
+            }
 
             let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
             if (this.nStorage == this.storageSize || employees[0].selected == false) {
                 orderBtn.classList.add("isHidden");
             } else if (employees[0].selected == true) {
                 orderBtn.classList.remove("isHidden");
-            } 
-
+            } else
             orderBtn.addEventListener("click", this.orderIngredients);
         }
         
@@ -102,11 +108,9 @@ namespace Abschlussarbeit {
             
         }
 
-        prepare(): void {
-            //employee[0].move(1 / 50, employee[0].position.x, employee[0].position.y);
-            console.log(this.preperationTime);
-            movePoint = new Vector (this.storagePosition.x, this.storagePosition.y);
+        public prepare(): void {
             
+            //movePoint = new Vector (this.storagePositionX, this.storagePositionY);
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let prepareBtn: HTMLButtonElement = document.querySelector("#prepare")!;
             prepareBtn.classList.add("isHidden");
@@ -129,6 +133,11 @@ namespace Abschlussarbeit {
             }
             
             Employee.busy = true;
+
+            console.log(this.storagePositionX, this.storagePositionY);
+            
+            employees[0].moveTo(this.storagePositionX, this.storagePositionY, 1 / 50);
+
 
             let counter: number = this.preperationTime;
             let assistenceNum: number = this.preperationTime;

@@ -2,7 +2,7 @@
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class Ingredient {
-        constructor(_name, _storageSize, _nStorage, _barSize, _nBar, _nUnits, _preperationTime, _barPosition, _storagePostition) {
+        constructor(_name, _storageSize, _nStorage, _barSize, _nBar, _nUnits, _preperationTime, _barPositionX, _barPositionY, _storagePositionX, _storagePositionY) {
             this.name = _name;
             this.storageSize = _storageSize;
             this.barSize = _barSize;
@@ -10,8 +10,11 @@ var Abschlussarbeit;
             this.preperationTime = _preperationTime;
             this.nBar = _nBar;
             this.nStorage = _nStorage;
-            this.barPosition = _barPosition;
-            this.storagePosition = _storagePostition;
+            this.barPositionX = _barPositionX;
+            this.barPositionY = _barPositionY;
+            this.storagePositionX = _storagePositionX;
+            this.storagePositionY = _storagePositionY;
+            console.log(this.storagePositionX);
         }
         showBarMenu(_event) {
             let barMenu = document.querySelector("#barMenu");
@@ -30,8 +33,7 @@ var Abschlussarbeit;
             this.clicked = true;
         }
         placeTopping() {
-            Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(this.barPosition.x, this.barPosition.y);
-            console.log(Abschlussarbeit.movePoint);
+            //movePoint = new Vector (this.barPositionX, this.barPositionY);
         }
         showStorageMenu(_event) {
             let storageMenu = document.querySelector("#storageMenu");
@@ -47,13 +49,14 @@ var Abschlussarbeit;
             let ingredientLevelStorage = document.querySelector("#ingredientLevelStorage");
             ingredientLevelStorage.innerHTML = "Auf Lager: " + percentageDisplayStorage + "% " + this.nStorage + "/" + this.storageSize;
             let prepareBtn = document.querySelector("#prepare");
+            console.log(Abschlussarbeit.employees[0].selected);
             if (this.nStorage == 0 || Abschlussarbeit.employees[0].selected == false) {
                 prepareBtn.classList.add("isHidden");
             }
             else if (Abschlussarbeit.employees[0].selected == true) {
                 prepareBtn.classList.remove("isHidden");
+                prepareBtn.addEventListener("click", this.prepare);
             }
-            prepareBtn.addEventListener("click", this.prepare);
             let orderBtn = document.querySelector("#orderBtn");
             if (this.nStorage == this.storageSize || Abschlussarbeit.employees[0].selected == false) {
                 orderBtn.classList.add("isHidden");
@@ -61,14 +64,13 @@ var Abschlussarbeit;
             else if (Abschlussarbeit.employees[0].selected == true) {
                 orderBtn.classList.remove("isHidden");
             }
-            orderBtn.addEventListener("click", this.orderIngredients);
+            else
+                orderBtn.addEventListener("click", this.orderIngredients);
         }
         static topIngredient() {
         }
         prepare() {
-            //employee[0].move(1 / 50, employee[0].position.x, employee[0].position.y);
-            console.log(this.preperationTime);
-            Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(this.storagePosition.x, this.storagePosition.y);
+            //movePoint = new Vector (this.storagePositionX, this.storagePositionY);
             let storageMenu = document.querySelector("#storageMenu");
             let prepareBtn = document.querySelector("#prepare");
             prepareBtn.classList.add("isHidden");
@@ -87,6 +89,8 @@ var Abschlussarbeit;
                 this.nStorage -= neededFillAmount;
             }
             Abschlussarbeit.Employee.busy = true;
+            console.log(this.storagePositionX, this.storagePositionY);
+            Abschlussarbeit.employees[0].moveTo(this.storagePositionX, this.storagePositionY, 1 / 50);
             let counter = this.preperationTime;
             let assistenceNum = this.preperationTime;
             console.log(counter, assistenceNum);

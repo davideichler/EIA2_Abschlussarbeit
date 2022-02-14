@@ -48,8 +48,19 @@
     border-radius: 5px;
     border: 2px solid black;
     cursor: grab ;
-
 }
+
+#breakBtn {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    margin-left: 35px;
+    margin-top: 500px;
+}
+
 
 .storage {
     position: absolute;

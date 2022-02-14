@@ -5,11 +5,17 @@ namespace Abschlussarbeit {
 
     let human: Human[] = [];
     export let employees: Employee[] = [];
+    export let anyEmployee: Employee; 
+    for (let index: number  = 0; index < employees.length; index++) {
+            anyEmployee = employees[index];           
+        }
+
     export let ingredients: Ingredient[] = [];
     let customers: Customer[] = [];
 
     let nEmployees: number;
     let nCustomer: number;
+    let timeCustomer: number;
 
     let stockCapacity: string;
     export let stockFactor: number;
@@ -18,10 +24,11 @@ namespace Abschlussarbeit {
     
     let background: ImageData;
 
+    export let gametime: number = 0;
+
     export let movePoint: Vector = new Vector (0, 0);
-    // export let movePointX: number;
-    // export let movePointY: number;
-   // let stockCapacity: string;
+    export let movePointX: number;
+    export let movePointY: number;
 
     function handleLoad(_event: Event): void {
 
@@ -47,8 +54,12 @@ namespace Abschlussarbeit {
         console.log(stockFactor);
 
         nEmployees = Number(document.querySelector("#nEmployees")!.value);
-        nCustomer = Number(document.querySelector("#nCustomers")!.value);
-        console.log(nCustomer);
+        timeCustomer = Number(document.querySelector("#nCustomers")!.value);
+        console.log(timeCustomer);
+
+        
+        /* window.setInterval(createCustomer, timeCustomer * 100);
+        console.log(nCustomer); */
 
     }
     
@@ -81,22 +92,28 @@ namespace Abschlussarbeit {
         createEmployees(nEmployees);
         console.log(nEmployees);
 
-        createCustomer(nCustomer);
-        console.log(nCustomer);
+        createCustomer(timeCustomer);
 
-        let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20, new Vector (350, 150), new Vector (150, 150));
-        let onion: Ingredient = new Ingredient("Zwiebeln", 70 * stockFactor, 70 * stockFactor, 15, 15, 0.5, 30);
-        let corn: Ingredient = new Ingredient("Mais", 1000 * stockFactor, 1000 * stockFactor, 300, 300, 30, 5);
-        let tomato: Ingredient = new Ingredient("Tomate", 50 * stockFactor, 50 * stockFactor, 15, 15, 0.5, 15);
-        let kraut: Ingredient = new Ingredient("Kraut", 150 * stockFactor, 150 * stockFactor, 50, 50, 12.5, 10);
-        let peperoni: Ingredient = new Ingredient("Peperoni", 50 * stockFactor, 50 * stockFactor, 30, 30, 2, 5);
+        /* let firstCustomer: Customer = new Customer (0);
+        customers.push(firstCustomer); */
+        // console.log(timeCustomer);
+        // window.setInterval(createCustomer, timeCustomer);
+        // console.log(nCustomer);
+
+        let salad: Ingredient = new Ingredient("Salat", 100 * stockFactor, 100 * stockFactor, 25, 25, 2, 20, 350, 150, 150, 150);
+        let onion: Ingredient = new Ingredient("Zwiebeln", 70 * stockFactor, 70 * stockFactor, 15, 15, 0.5, 30, 350, 180, 150, 180);
+        let corn: Ingredient = new Ingredient("Mais", 1000 * stockFactor, 1000 * stockFactor, 300, 300, 30, 5, 350, 210, 150, 210);
+        let tomato: Ingredient = new Ingredient("Tomate", 50 * stockFactor, 50 * stockFactor, 15, 15, 0.5, 15, 350, 240, 150, 240);
+        let kraut: Ingredient = new Ingredient("Kraut", 150 * stockFactor, 150 * stockFactor, 50, 50, 12.5, 10, 350, 270, 150, 270);
+        let peperoni: Ingredient = new Ingredient("Peperoni", 50 * stockFactor, 50 * stockFactor, 30, 30, 2, 5, 350, 300, 150, 300);
 
         ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
 
         /* let testEmployee = new Employee(1);
         testEmployee.draw();
         employee.push(testEmployee); */
-        
+        window.setInterval(countGametime, 1000);
+
         window.setInterval(update, 50);
     }
 
@@ -162,6 +179,9 @@ namespace Abschlussarbeit {
 
         Ingredient.clicked = false;
         console.log("ingr " + Ingredient.clicked);  
+
+        let breakBtn: HTMLButtonElement = document.querySelector("#breakBtn")!;
+        breakBtn.classList.add("isHidden");
     }
 
  
@@ -183,8 +203,8 @@ namespace Abschlussarbeit {
 
         for (let a of employees) {
             a.move(1 / 50);
-            movePoint = new Vector(a.position.x, a.position.y);
-            a.draw();
+            //movePoint = new Vector(a.position.x, a.position.y);
+            a.draw(); 
         }
 
         for (let a of customers) {
@@ -193,35 +213,9 @@ namespace Abschlussarbeit {
         }
     }
 
+    function countGametime(): void {
+            gametime++;
+    }
 
-    /* function drawShop(): void {
-        crc2.fillStyle = "HSL(0, 0%, 70%, 1)";
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-
-        crc2.rect(400, 20, 120, 500);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(400, 20, 120, 500);
-        crc2.stroke();
-        
-        crc2.rect(20, 20, 150, 550);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(20, 20, 150, 550);
-        crc2.stroke();
-
-        crc2.rect(170, 20, 230, 100);
-        crc2.fillStyle = "HSL(0, 0%, 80%, 1)";
-        crc2.fillRect(170, 20, 230, 100);
-        crc2.stroke();
-
-        crc2.rect(890, 150, 15, 15);
-        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        crc2.fillRect(890, 150, 15, 15);
-        crc2.stroke();
-
-        crc2.rect(890, 225, 15, 15);
-        crc2.fillStyle = "HSL(360, 25%, 39%, 1)";
-        crc2.fillRect(890, 225, 15, 15);
-        crc2.stroke();
-    } */
     
 }
