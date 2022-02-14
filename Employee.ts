@@ -39,7 +39,7 @@ namespace Abschlussarbeit {
                 this.showBreakBtn();
                 return true;
             }  else 
-            //this.selected = false;
+            this.selected = false;
             return false;
         }
                 

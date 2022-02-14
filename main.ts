@@ -109,12 +109,16 @@ namespace Abschlussarbeit {
         let kraut: Ingredient = new Ingredient("Kraut", 150 * stockFactor, 150 * stockFactor, 50, 50, 12.5, 10, 350, 270, 150, 270);
         let peperoni: Ingredient = new Ingredient("Peperoni", 50 * stockFactor, 50 * stockFactor, 30, 30, 2, 5, 350, 300, 150, 300);
 
-        let doener: Bread = new Bread("doener", 150, 150);
-        let yufka: Bread = new Bread("yufka", 150, 150);
+        let doener: Ingredient = new Ingredient("doener", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let yufka: Ingredient = new Ingredient("yufka", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+
+        let classic: Ingredient = new Ingredient ("classic", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let chicken: Ingredient = new Ingredient ("chicken", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let falafel: Ingredient = new Ingredient ("falafel", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
 
 
-        ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka);
-        breads.push(doener, yufka);
+        ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka, classic, chicken, falafel);
+        //breads.push(doener, yufka);
         /* let testEmployee = new Employee(1);
         testEmployee.draw();
         employee.push(testEmployee); */
@@ -154,9 +158,15 @@ namespace Abschlussarbeit {
         } else if (target == "peperoni") {
             ingredients[5].showBarMenu(_event);
         } else if (target == "yufka") {
-            breads[0].startMeal(_event);
+            ingredients[6].showBarMenu(_event);
         } else if (target == "doener") {
-            breads[1].startMeal(_event);
+            ingredients[7].showBarMenu(_event);
+        } else if (target == "classicKebab") {
+            ingredients[8].showBarMenu(_event);
+        } else if (target == "chickenKebab") {
+            ingredients[9].showBarMenu(_event);
+        } else if (target == "falafel") {
+            ingredients[10].showBarMenu(_event);
         }
     }
 

@@ -27,8 +27,8 @@ var Abschlussarbeit;
                 return true;
             }
             else
-                //this.selected = false;
-                return false;
+                this.selected = false;
+            return false;
         }
         draw() {
             if (this.mood <= 20 && this.mood >= -20) {

@@ -77,10 +77,13 @@ var Abschlussarbeit;
         let tomato = new Abschlussarbeit.Ingredient("Tomate", 50 * Abschlussarbeit.stockFactor, 50 * Abschlussarbeit.stockFactor, 15, 15, 0.5, 15, 350, 240, 150, 240);
         let kraut = new Abschlussarbeit.Ingredient("Kraut", 150 * Abschlussarbeit.stockFactor, 150 * Abschlussarbeit.stockFactor, 50, 50, 12.5, 10, 350, 270, 150, 270);
         let peperoni = new Abschlussarbeit.Ingredient("Peperoni", 50 * Abschlussarbeit.stockFactor, 50 * Abschlussarbeit.stockFactor, 30, 30, 2, 5, 350, 300, 150, 300);
-        let doener = new Abschlussarbeit.Bread("doener", 150, 150);
-        let yufka = new Abschlussarbeit.Bread("yufka", 150, 150);
-        Abschlussarbeit.ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka);
-        breads.push(doener, yufka);
+        let doener = new Abschlussarbeit.Ingredient("doener", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let yufka = new Abschlussarbeit.Ingredient("yufka", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let classic = new Abschlussarbeit.Ingredient("classic", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let chicken = new Abschlussarbeit.Ingredient("chicken", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        let falafel = new Abschlussarbeit.Ingredient("falafel", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
+        Abschlussarbeit.ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka, classic, chicken, falafel);
+        //breads.push(doener, yufka);
         /* let testEmployee = new Employee(1);
         testEmployee.draw();
         employee.push(testEmployee); */
@@ -122,10 +125,19 @@ var Abschlussarbeit;
             Abschlussarbeit.ingredients[5].showBarMenu(_event);
         }
         else if (target == "yufka") {
-            breads[0].startMeal(_event);
+            Abschlussarbeit.ingredients[6].showBarMenu(_event);
         }
         else if (target == "doener") {
-            breads[1].startMeal(_event);
+            Abschlussarbeit.ingredients[7].showBarMenu(_event);
+        }
+        else if (target == "classicKebab") {
+            Abschlussarbeit.ingredients[8].showBarMenu(_event);
+        }
+        else if (target == "chickenKebab") {
+            Abschlussarbeit.ingredients[9].showBarMenu(_event);
+        }
+        else if (target == "falafel") {
+            Abschlussarbeit.ingredients[10].showBarMenu(_event);
         }
     }
     function callStorageMenu(_event) {

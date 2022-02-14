@@ -104,9 +104,9 @@ namespace Abschlussarbeit {
             orderBtn.addEventListener("click", this.orderIngredients);
         }
         
-        static topIngredient(): void {
+        /* static topIngredient(): void {
             
-        }
+        } */
 
         public prepare(): void {
             
@@ -203,7 +203,7 @@ namespace Abschlussarbeit {
         }
 
         static fillBar(): void {
-
+            
         }
     }
 

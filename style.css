@@ -199,7 +199,7 @@
     border: 2px solid black;
     text-align: center;
     background-color: white;
-    line-height: 10%;
+    line-height: 100%;
     padding: 0.5%;
 }
 
@@ -212,7 +212,7 @@
     border: 2px solid black;
     text-align: center;
     background-color: white;
-    line-height: 10%;
+    line-height: 100%;
     padding-bottom: 2%;
 }
 

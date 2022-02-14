@@ -67,8 +67,9 @@ var Abschlussarbeit;
             else
                 orderBtn.addEventListener("click", this.orderIngredients);
         }
-        static topIngredient() {
-        }
+        /* static topIngredient(): void {
+            
+        } */
         prepare() {
             //movePoint = new Vector (this.storagePositionX, this.storagePositionY);
             let storageMenu = document.querySelector("#storageMenu");
