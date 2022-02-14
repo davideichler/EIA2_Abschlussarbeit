@@ -9,6 +9,7 @@ var Abschlussarbeit;
         Abschlussarbeit.anyEmployee = Abschlussarbeit.employees[index];
     }
     Abschlussarbeit.ingredients = [];
+    let breads = [];
     let customers = [];
     let nEmployees;
     let nCustomer;
@@ -59,6 +60,7 @@ var Abschlussarbeit;
         }
         canvas.addEventListener("click", hideMenus);
         canvas.addEventListener("click", detectClick);
+        canvas.addEventListener("click", detectClickCustomer);
         Abschlussarbeit.drawShop();
         background = Abschlussarbeit.crc2.getImageData(0, 0, Abschlussarbeit.crc2.canvas.width, Abschlussarbeit.crc2.canvas.height);
         createEmployees(nEmployees);
@@ -75,7 +77,10 @@ var Abschlussarbeit;
         let tomato = new Abschlussarbeit.Ingredient("Tomate", 50 * Abschlussarbeit.stockFactor, 50 * Abschlussarbeit.stockFactor, 15, 15, 0.5, 15, 350, 240, 150, 240);
         let kraut = new Abschlussarbeit.Ingredient("Kraut", 150 * Abschlussarbeit.stockFactor, 150 * Abschlussarbeit.stockFactor, 50, 50, 12.5, 10, 350, 270, 150, 270);
         let peperoni = new Abschlussarbeit.Ingredient("Peperoni", 50 * Abschlussarbeit.stockFactor, 50 * Abschlussarbeit.stockFactor, 30, 30, 2, 5, 350, 300, 150, 300);
-        Abschlussarbeit.ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
+        let doener = new Abschlussarbeit.Bread("doener", 150, 150);
+        let yufka = new Abschlussarbeit.Bread("yufka", 150, 150);
+        Abschlussarbeit.ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka);
+        breads.push(doener, yufka);
         /* let testEmployee = new Employee(1);
         testEmployee.draw();
         employee.push(testEmployee); */
@@ -116,6 +121,12 @@ var Abschlussarbeit;
         else if (target == "peperoni") {
             Abschlussarbeit.ingredients[5].showBarMenu(_event);
         }
+        else if (target == "yufka") {
+            breads[0].startMeal(_event);
+        }
+        else if (target == "doener") {
+            breads[1].startMeal(_event);
+        }
     }
     function callStorageMenu(_event) {
         let target = _event.target.id;
@@ -152,10 +163,17 @@ var Abschlussarbeit;
     function detectClick(_event) {
         let xClick = _event.clientX;
         let yClick = _event.clientY;
-        //console.log(employee[].getClicked(xClick, yClick));
-        console.log();
+        //console.log(employees[0].getClicked(xClick, yClick));
         for (let b of Abschlussarbeit.employees) {
             b.getClicked(xClick, yClick);
+        }
+    }
+    function detectClickCustomer(_event) {
+        let xClick = _event.clientX;
+        let yClick = _event.clientY;
+        //console.log(customers[0].getClicked(xClick, yClick));
+        for (let c of customers) {
+            c.getClicked(xClick, yClick);
         }
     }
     function update() {

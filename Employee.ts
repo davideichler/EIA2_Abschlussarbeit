@@ -24,6 +24,24 @@ namespace Abschlussarbeit {
             setInterval(this.countPausetime, 1000);
             setInterval(this.countWorkime, 1000);
         }
+
+        public getClicked(_xClick: number, _yClick: number): boolean {
+            let distanceEmp: number =
+            Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
+            +
+            ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
+            console.log(distanceEmp);
+
+            if (distanceEmp < 30) {
+                console.log(distanceEmp);
+                this.selected = true;
+                console.log(this.selected);
+                this.showBreakBtn();
+                return true;
+            }  else 
+            //this.selected = false;
+            return false;
+        }
                 
         public draw(): void {
             if (this.mood <= 20 && this.mood >= -20) {
@@ -53,6 +71,7 @@ namespace Abschlussarbeit {
                 crc2.restore();
             }
 
+            //console.log(this.selected);
             if (this.selected == true) {
                 crc2.save();
                 crc2.translate(this.position.x, this.position.y);
@@ -79,7 +98,6 @@ namespace Abschlussarbeit {
         }
 
         public moveTo (_positionX: number, _positionY: number, _timeslice: number): void {
-
             let offset: Vector = this.velocity.copy();
             offset.scale(1 / 50);
             this.position.add(offset);
@@ -96,21 +114,23 @@ namespace Abschlussarbeit {
         }
 
 
-        public getClicked(_xClick: number, _yClick: number): boolean {
-            let distance: number =
-            Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
-            +
-            ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
-            console.log(distance);
+        // public getClicked(_xClick: number, _yClick: number): boolean {
+        //     let distanceEmp: number =
+        //     Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
+        //     +
+        //     ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
+        //     console.log(distanceEmp);
 
-            if (distance < 30) {
-                this.selected = true;
-                this.showBreakBtn();
-                return true;
-            }  else 
-            this.selected = false;
-            return false;
-        }
+        //     if (distanceEmp < 30) {
+        //         console.log(distanceEmp);
+        //         this.selected = true;
+        //         console.log(this.selected);
+        //         this.showBreakBtn();
+        //         return true;
+        //     }  else 
+        //     //this.selected = false;
+        //     return false;
+        // }
 
         showBreakBtn(): void {
             let breakBtn: HTMLButtonElement = document.querySelector("#breakBtn")!;
@@ -152,28 +172,18 @@ namespace Abschlussarbeit {
         }
 
         public countPausetime(): number {
-            console.log(this.busy);
+            //console.log(this.busy);
             if (this.busy == false) {
                 //setInterval((): void => { 
                     this.pausetime++;
                     
                    // },      1000);
             } 
-            console.log(this.pausetime);
+            //console.log(this.pausetime);
             return this.pausetime;
         }
 
-        /* public highlightEmployee(): void {
-            console.log("highlight");
-            crc2.beginPath();
-            crc2.moveTo(this.position.x, this.position.y - 25);
-            crc2.rect(-20, -35, 40, 8);  
-            crc2.fillStyle = "red";
-            crc2.stroke();
-            crc2.closePath();
-
-        } */
-
+        
         
     }
 

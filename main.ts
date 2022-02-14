@@ -11,6 +11,7 @@ namespace Abschlussarbeit {
         }
 
     export let ingredients: Ingredient[] = [];
+    let breads: Bread[] = [];
     let customers: Customer[] = [];
 
     let nEmployees: number;
@@ -85,7 +86,8 @@ namespace Abschlussarbeit {
 
         canvas.addEventListener("click", hideMenus);
         canvas.addEventListener("click", detectClick);
-        
+        canvas.addEventListener("click", detectClickCustomer);
+
         drawShop();
         background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
 
@@ -107,8 +109,12 @@ namespace Abschlussarbeit {
         let kraut: Ingredient = new Ingredient("Kraut", 150 * stockFactor, 150 * stockFactor, 50, 50, 12.5, 10, 350, 270, 150, 270);
         let peperoni: Ingredient = new Ingredient("Peperoni", 50 * stockFactor, 50 * stockFactor, 30, 30, 2, 5, 350, 300, 150, 300);
 
-        ingredients.push(salad, onion, corn, tomato, kraut, peperoni);
+        let doener: Bread = new Bread("doener", 150, 150);
+        let yufka: Bread = new Bread("yufka", 150, 150);
 
+
+        ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka);
+        breads.push(doener, yufka);
         /* let testEmployee = new Employee(1);
         testEmployee.draw();
         employee.push(testEmployee); */
@@ -147,7 +153,11 @@ namespace Abschlussarbeit {
             ingredients[4].showBarMenu(_event);
         } else if (target == "peperoni") {
             ingredients[5].showBarMenu(_event);
-        } 
+        } else if (target == "yufka") {
+            breads[0].startMeal(_event);
+        } else if (target == "doener") {
+            breads[1].startMeal(_event);
+        }
     }
 
     function callStorageMenu(_event: MouseEvent): void {
@@ -188,13 +198,21 @@ namespace Abschlussarbeit {
     function detectClick(_event: MouseEvent): void {
         let xClick: number = _event.clientX;
         let yClick: number = _event.clientY;
-        //console.log(employee[].getClicked(xClick, yClick));
-        console.log(
+        //console.log(employees[0].getClicked(xClick, yClick));
+        
         for (let b of employees) {
             b.getClicked(xClick, yClick);
         }
-            
+    }
 
+    function detectClickCustomer(_event: MouseEvent): void {
+        let xClick: number = _event.clientX;
+        let yClick: number = _event.clientY;
+        //console.log(customers[0].getClicked(xClick, yClick));
+
+        for (let c of customers) {
+            c.getClicked(xClick, yClick);
+        }
     }
 
     function update(): void {

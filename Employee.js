@@ -14,6 +14,22 @@ var Abschlussarbeit;
             setInterval(this.countPausetime, 1000);
             setInterval(this.countWorkime, 1000);
         }
+        getClicked(_xClick, _yClick) {
+            let distanceEmp = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
+                +
+                    ((_yClick - this.position.y) * (_yClick - this.position.y)));
+            console.log(distanceEmp);
+            if (distanceEmp < 30) {
+                console.log(distanceEmp);
+                this.selected = true;
+                console.log(this.selected);
+                this.showBreakBtn();
+                return true;
+            }
+            else
+                //this.selected = false;
+                return false;
+        }
         draw() {
             if (this.mood <= 20 && this.mood >= -20) {
                 Abschlussarbeit.crc2.save();
@@ -45,6 +61,7 @@ var Abschlussarbeit;
                 Abschlussarbeit.drawUnderchallengedEmployee();
                 Abschlussarbeit.crc2.restore();
             }
+            //console.log(this.selected);
             if (this.selected == true) {
                 Abschlussarbeit.crc2.save();
                 Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
@@ -78,20 +95,22 @@ var Abschlussarbeit;
             }
             console.log(this.velocity);
         }
-        getClicked(_xClick, _yClick) {
-            let distance = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
-                +
-                    ((_yClick - this.position.y) * (_yClick - this.position.y)));
-            console.log(distance);
-            if (distance < 30) {
-                this.selected = true;
-                this.showBreakBtn();
-                return true;
-            }
-            else
-                this.selected = false;
-            return false;
-        }
+        // public getClicked(_xClick: number, _yClick: number): boolean {
+        //     let distanceEmp: number =
+        //     Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
+        //     +
+        //     ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
+        //     console.log(distanceEmp);
+        //     if (distanceEmp < 30) {
+        //         console.log(distanceEmp);
+        //         this.selected = true;
+        //         console.log(this.selected);
+        //         this.showBreakBtn();
+        //         return true;
+        //     }  else 
+        //     //this.selected = false;
+        //     return false;
+        // }
         showBreakBtn() {
             let breakBtn = document.querySelector("#breakBtn");
             breakBtn.classList.remove("isHidden");
@@ -126,13 +145,13 @@ var Abschlussarbeit;
             return this.worktime;
         }
         countPausetime() {
-            console.log(this.busy);
+            //console.log(this.busy);
             if (this.busy == false) {
                 //setInterval((): void => { 
                 this.pausetime++;
                 // },      1000);
             }
-            console.log(this.pausetime);
+            //console.log(this.pausetime);
             return this.pausetime;
         }
     }
