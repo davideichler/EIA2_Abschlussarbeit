@@ -154,6 +154,11 @@ var Abschlussarbeit;
             //console.log(this.pausetime);
             return this.pausetime;
         }
+        takeOrder() {
+            console.log("i will do this");
+            let orderDisplay = document.querySelector("#orderDisplay");
+            orderDisplay.classList.add("isHidden");
+        }
     }
     Abschlussarbeit.Employee = Employee;
 })(Abschlussarbeit || (Abschlussarbeit = {}));

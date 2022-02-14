@@ -98,8 +98,8 @@ var Abschlussarbeit;
             let orderParagraph = document.querySelector("#orderParagraph");
             let acceptBtn = document.querySelector("#acceptBtn");
             orderDisplay.classList.remove("isHidden");
-            //orderDisplay.classList.add("orderDisplay");
-            orderDisplay.id = "orderDisplay";
+            acceptBtn.addEventListener("click", Abschlussarbeit.employees[0].takeOrder);
+            orderParagraph.innerHTML = this.order.fullOrder;
         }
     }
     Abschlussarbeit.Customer = Customer;

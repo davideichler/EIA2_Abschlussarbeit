@@ -145,12 +145,16 @@
     border: 2px solid black;
     text-align: center;
     background-color: white;
-    line-height: 10%;
+    line-height: 110%;
     padding: 0.5%;
     margin-left: 550px;
     margin-top: 250px;
     width: 100px;
     height: 100px;
+}
+
+#orderParagraph{
+    height: 40px;
 }
 
 #acceptBtn {

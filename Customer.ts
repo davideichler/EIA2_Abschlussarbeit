@@ -114,10 +114,8 @@ namespace Abschlussarbeit {
             let acceptBtn: HTMLButtonElement = document.querySelector("#acceptBtn")!;
 
             orderDisplay.classList.remove("isHidden");
-
-            //orderDisplay.classList.add("orderDisplay");
-            orderDisplay.id = "orderDisplay";
-
+            acceptBtn.addEventListener("click", employees[0].takeOrder);
+            orderParagraph.innerHTML = this.order.fullOrder;
         }
     }
 }

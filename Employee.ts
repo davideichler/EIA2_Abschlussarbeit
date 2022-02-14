@@ -184,8 +184,10 @@ namespace Abschlussarbeit {
         }
 
         
-        
+        public takeOrder(): void {
+            console.log("i will do this");
+            let orderDisplay: HTMLButtonElement = document.querySelector("#orderDisplay")!;
+            orderDisplay.classList.add("isHidden");
+        } 
     }
-
-    
 }
