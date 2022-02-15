@@ -21,8 +21,7 @@ namespace Abschlussarbeit {
             //this.didBreak = false;
 
             console.log(this.busy);
-            setInterval(this.countPausetime, 1000);
-            setInterval(this.countWorkime, 1000);
+            setInterval(this.changeMood, 1000);
         }
 
         public getClicked(_xClick: number, _yClick: number): boolean {
@@ -106,38 +105,31 @@ namespace Abschlussarbeit {
         }
 
         changeMood(): void {
-            if (gametime <= 10) {
+            this.updateTime();
+            if (gametime <= 5) {
                 this.mood = this.mood;
             } else
 
-            this.mood += this.worktime;
-            this.mood -= this.pausetime;
-
-            console.log(this.mood);
-            /* if (this.didBreak == true) {
-                this.mood = 0;
-            } */
+            this.mood = this.worktime - this.pausetime; 
+            //console.log(this.mood);
         }
 
-        public countWorkime(): number {
+        updateTime(): void {
             if (this.busy == true) {
-                    this.worktime++;
-            } 
-            return this.worktime;
+                    this.worktime += moodFactor;
+            } else 
+                this.pausetime += moodFactor; 
         }
-
-        public countPausetime(): number {
-            if (this.busy == false) {
-                    this.pausetime++;
-            } 
-            return this.pausetime;
-        }
-
         
         public takeOrder(): void {
             console.log("i will do this");
             let orderDisplay: HTMLButtonElement = document.querySelector("#orderDisplay")!;
             orderDisplay.classList.add("isHidden");
+
+            let topIngredient: HTMLButtonElement = document.querySelector("#topIngredient")!;
+            topIngredient.classList.remove("isHidden");
+
+            let newOrder: Order = new Order(false);
         } 
     }
 }

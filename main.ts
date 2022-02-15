@@ -11,15 +11,16 @@ namespace Abschlussarbeit {
         }
 
     export let ingredients: Ingredient[] = [];
-    let breads: Bread[] = [];
     let customers: Customer[] = [];
+    export let orders: Order[] = [];
 
     let nEmployees: number;
     let nCustomer: number;
     let timeCustomer: number;
-
     let stockCapacity: string;
     export let stockFactor: number;
+    let moodCapacity: string;
+    export let moodFactor: number;
     
     export let crc2: CanvasRenderingContext2D;
     
@@ -48,16 +49,23 @@ namespace Abschlussarbeit {
             stockFactor = 1.0;
         }
 
+        moodCapacity = document.querySelector('input[name="moodFactor"]:checked')!.value;
+        if (moodCapacity == "high") {
+            moodFactor = 1.2;
+        } else if (moodCapacity == "low") {
+            moodFactor = 0.8;
+        } else if (moodCapacity == "medium") {
+            moodFactor = 1.0;
+        }
+
         console.log(stockFactor);
 
         nEmployees = Number(document.querySelector("#nEmployees")!.value);
         timeCustomer = Number(document.querySelector("#nCustomers")!.value);
         console.log(timeCustomer);
 
-        
         /* window.setInterval(createCustomer, timeCustomer * 100);
         console.log(nCustomer); */
-
     }
     
     function createCanvas(): void {
@@ -112,11 +120,9 @@ namespace Abschlussarbeit {
         let chicken: Ingredient = new Ingredient ("chicken", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
         let falafel: Ingredient = new Ingredient ("falafel", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
 
-
         ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka, classic, chicken, falafel);
 
         window.setInterval(countGametime, 1000);
-
         window.setInterval(update, 50);
     }
 
@@ -180,7 +186,6 @@ namespace Abschlussarbeit {
         } else if (target == "peperoniStorage") {
             ingredients[5].showStorageMenu(_event);
         } 
-
     }
 
     function hideMenus(_event: MouseEvent): void {
@@ -236,6 +241,4 @@ namespace Abschlussarbeit {
     function countGametime(): void {
             gametime++;
     }
-
-    
 }

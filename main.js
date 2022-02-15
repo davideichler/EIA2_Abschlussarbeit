@@ -9,12 +9,13 @@ var Abschlussarbeit;
         Abschlussarbeit.anyEmployee = Abschlussarbeit.employees[index];
     }
     Abschlussarbeit.ingredients = [];
-    let breads = [];
     let customers = [];
+    Abschlussarbeit.orders = [];
     let nEmployees;
     let nCustomer;
     let timeCustomer;
     let stockCapacity;
+    let moodCapacity;
     let background;
     Abschlussarbeit.gametime = 0;
     function handleLoad(_event) {
@@ -34,6 +35,16 @@ var Abschlussarbeit;
         }
         else if (stockCapacity == "medium") {
             Abschlussarbeit.stockFactor = 1.0;
+        }
+        moodCapacity = document.querySelector('input[name="moodFactor"]:checked').value;
+        if (moodCapacity == "high") {
+            Abschlussarbeit.moodFactor = 1.2;
+        }
+        else if (moodCapacity == "low") {
+            Abschlussarbeit.moodFactor = 0.8;
+        }
+        else if (moodCapacity == "medium") {
+            Abschlussarbeit.moodFactor = 1.0;
         }
         console.log(Abschlussarbeit.stockFactor);
         nEmployees = Number(document.querySelector("#nEmployees").value);

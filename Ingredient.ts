@@ -1,9 +1,5 @@
 namespace Abschlussarbeit {
     export class Ingredient {
-        static breadArray: string[] = ["Yufka", "Döner"];
-        static mainIngridientArray: string[] = ["Normalen", "Hähnchen", "Falafel"];
-        static ingredientArray: string[] = ["Salat", "Tomate", "Zwiebeln", "Mais", "Kraut", "Peperoni"];
-        static extrasArray: string[] = ["extra scharf", "mit Feta"];
         static clicked: boolean;
         static nBar: number;
         static barSize: number;
@@ -36,7 +32,7 @@ namespace Abschlussarbeit {
             this.barPositionY = _barPositionY;
             this.storagePositionX = _storagePositionX;   
             this.storagePositionY = _storagePositionY;    
-            console.log(this.storagePositionX);       
+            // console.log(this.storagePositionX);       
         }
 
         showBarMenu(_event: MouseEvent): void {
@@ -64,7 +60,8 @@ namespace Abschlussarbeit {
         }
 
         placeTopping(): void {
-            //movePoint = new Vector (this.barPositionX, this.barPositionY);
+            employees[0].moveTo(this.barPositionX, this.barPositionY, 1 / 50);
+            orders[0].makeOrder(this.name);
         }
 
         showStorageMenu(_event: MouseEvent): void {
@@ -162,7 +159,6 @@ namespace Abschlussarbeit {
         }
 
         orderIngredients(): void {
-
             let storageMenu: HTMLDivElement = document.querySelector("#storageMenu")!;
             let orderBtn: HTMLButtonElement = document.querySelector("#orderBtn")!;
             orderBtn.classList.add("isHidden");
@@ -197,9 +193,7 @@ namespace Abschlussarbeit {
         }
 
         static fillBar(): void {
-
+            //put the amount of prepared ingredients to nBar
         }
     }
-
-    
 }

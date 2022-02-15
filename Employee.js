@@ -11,8 +11,7 @@ var Abschlussarbeit;
             this.velocity = new Abschlussarbeit.Vector(0, 0);
             //this.didBreak = false;
             console.log(this.busy);
-            setInterval(this.countPausetime, 1000);
-            setInterval(this.countWorkime, 1000);
+            setInterval(this.changeMood, 1000);
         }
         getClicked(_xClick, _yClick) {
             let distanceEmp = Math.sqrt(((_xClick - this.position.x) * (_xClick - this.position.x))
@@ -87,33 +86,28 @@ var Abschlussarbeit;
             this.pausetime = 0;
         }
         changeMood() {
-            if (Abschlussarbeit.gametime <= 10) {
+            this.updateTime();
+            if (Abschlussarbeit.gametime <= 5) {
                 this.mood = this.mood;
             }
             else
-                this.mood += this.worktime;
-            this.mood -= this.pausetime;
-            console.log(this.mood);
-            /* if (this.didBreak == true) {
-                this.mood = 0;
-            } */
+                this.mood = this.worktime - this.pausetime;
+            //console.log(this.mood);
         }
-        countWorkime() {
+        updateTime() {
             if (this.busy == true) {
-                this.worktime++;
+                this.worktime += Abschlussarbeit.moodFactor;
             }
-            return this.worktime;
-        }
-        countPausetime() {
-            if (this.busy == false) {
-                this.pausetime++;
-            }
-            return this.pausetime;
+            else
+                this.pausetime += Abschlussarbeit.moodFactor;
         }
         takeOrder() {
             console.log("i will do this");
             let orderDisplay = document.querySelector("#orderDisplay");
             orderDisplay.classList.add("isHidden");
+            let topIngredient = document.querySelector("#topIngredient");
+            topIngredient.classList.remove("isHidden");
+            let newOrder = new Abschlussarbeit.Order(false);
         }
     }
     Abschlussarbeit.Employee = Employee;

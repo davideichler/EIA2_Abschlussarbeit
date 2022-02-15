@@ -14,7 +14,7 @@ var Abschlussarbeit;
             this.barPositionY = _barPositionY;
             this.storagePositionX = _storagePositionX;
             this.storagePositionY = _storagePositionY;
-            console.log(this.storagePositionX);
+            // console.log(this.storagePositionX);       
         }
         showBarMenu(_event) {
             let barMenu = document.querySelector("#barMenu");
@@ -33,7 +33,8 @@ var Abschlussarbeit;
             this.clicked = true;
         }
         placeTopping() {
-            //movePoint = new Vector (this.barPositionX, this.barPositionY);
+            Abschlussarbeit.employees[0].moveTo(this.barPositionX, this.barPositionY, 1 / 50);
+            Abschlussarbeit.orders[0].makeOrder(this.name);
         }
         showStorageMenu(_event) {
             let storageMenu = document.querySelector("#storageMenu");
@@ -136,12 +137,9 @@ var Abschlussarbeit;
             }, 1000);
         }
         static fillBar() {
+            //put the amount of prepared ingredients to nBar
         }
     }
-    Ingredient.breadArray = ["Yufka", "Döner"];
-    Ingredient.mainIngridientArray = ["Normalen", "Hähnchen", "Falafel"];
-    Ingredient.ingredientArray = ["Salat", "Tomate", "Zwiebeln", "Mais", "Kraut", "Peperoni"];
-    Ingredient.extrasArray = ["extra scharf", "mit Feta"];
     Abschlussarbeit.Ingredient = Ingredient;
 })(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Ingredient.js.map
