@@ -1,9 +1,5 @@
 namespace Abschlussarbeit {
     export class Order {
-        // bread: Ingredient;
-        // mainIngredient: Ingredient;
-        // barIngredient: Ingredient[];
-        // extras: Ingredient[];
         orderType: boolean;
         bread: string[] = ["Yufka", "Döner"];
         mainIngredient: string[] = ["Normaler", "Hähnchen", "Falafel"];
@@ -15,12 +11,10 @@ namespace Abschlussarbeit {
             this.orderType = _orderType;
             if (this.orderType == true) {
                 this.generateCustomerOrder();
-            }
+            } else this.makeOrder();
         }
 
         generateCustomerOrder (): void {
-            //let fullOrder: string = " ";
-
             let rndMain: number = Math.floor(Math.random() * this.mainIngredient.length);
             let mainPick: string[] = this.mainIngredient.splice(rndMain, 1);
             this.fullOrder += mainPick + " ";
@@ -67,6 +61,10 @@ namespace Abschlussarbeit {
                 this.fullOrder += " " + extraPick;
             }
             console.log(this.fullOrder);
+        }
+
+        makeOrder(): void {
+
         }
     }
 }

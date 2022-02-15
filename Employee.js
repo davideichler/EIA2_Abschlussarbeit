@@ -26,41 +26,28 @@ var Abschlussarbeit;
                 this.showBreakBtn();
                 return true;
             }
-            else
-                this.selected = false;
+            this.selected = false;
             return false;
         }
         draw() {
+            Abschlussarbeit.crc2.save();
+            Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
             if (this.mood <= 20 && this.mood >= -20) {
-                Abschlussarbeit.crc2.save();
-                Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
                 Abschlussarbeit.drawHappyEmployee();
-                Abschlussarbeit.crc2.restore();
             }
             else if (this.mood > 20 && this.mood <= 40) {
-                Abschlussarbeit.crc2.save();
-                Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
                 Abschlussarbeit.drawStressedEmployee();
-                Abschlussarbeit.crc2.restore();
             }
             else if (this.mood > 40) {
-                Abschlussarbeit.crc2.save();
-                Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
                 Abschlussarbeit.drawOverchallengedEmployee();
-                Abschlussarbeit.crc2.restore();
             }
             else if (this.mood <= -21 && this.mood >= -40) {
-                Abschlussarbeit.crc2.save();
-                Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
                 Abschlussarbeit.drawBoredEmployee();
-                Abschlussarbeit.crc2.restore();
             }
             else if (this.mood <= -41) {
-                Abschlussarbeit.crc2.save();
-                Abschlussarbeit.crc2.translate(this.position.x, this.position.y);
                 Abschlussarbeit.drawUnderchallengedEmployee();
-                Abschlussarbeit.crc2.restore();
             }
+            Abschlussarbeit.crc2.restore();
             //console.log(this.selected);
             if (this.selected == true) {
                 Abschlussarbeit.crc2.save();
@@ -73,15 +60,6 @@ var Abschlussarbeit;
             let offset = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
-            //if (this.selected == true && )
-            // this.velocity = new Vector (movePoint.x - this.position.x, movePoint.y - this.position.y);
-            // if (this.position.x == movePoint.x && this.position.y == movePoint.y) {
-            //     this.velocity = new Vector (0, 0);
-            // }
-            // this.velocity = new Vector (movePoint.x - this.position.x, movePoint.y - this.position.y);
-            // if (this.position.x == movePoint.x && this.position.y == movePoint.y) {
-            //      this.velocity = new Vector (0, 0);
-            // }
         }
         moveTo(_positionX, _positionY, _timeslice) {
             let offset = this.velocity.copy();
@@ -95,22 +73,6 @@ var Abschlussarbeit;
             }
             console.log(this.velocity);
         }
-        // public getClicked(_xClick: number, _yClick: number): boolean {
-        //     let distanceEmp: number =
-        //     Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
-        //     +
-        //     ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
-        //     console.log(distanceEmp);
-        //     if (distanceEmp < 30) {
-        //         console.log(distanceEmp);
-        //         this.selected = true;
-        //         console.log(this.selected);
-        //         this.showBreakBtn();
-        //         return true;
-        //     }  else 
-        //     //this.selected = false;
-        //     return false;
-        // }
         showBreakBtn() {
             let breakBtn = document.querySelector("#breakBtn");
             breakBtn.classList.remove("isHidden");
@@ -138,20 +100,14 @@ var Abschlussarbeit;
         }
         countWorkime() {
             if (this.busy == true) {
-                //setInterval((): void => { 
                 this.worktime++;
-                //},      1000);
             }
             return this.worktime;
         }
         countPausetime() {
-            //console.log(this.busy);
             if (this.busy == false) {
-                //setInterval((): void => { 
                 this.pausetime++;
-                // },      1000);
             }
-            //console.log(this.pausetime);
             return this.pausetime;
         }
         takeOrder() {

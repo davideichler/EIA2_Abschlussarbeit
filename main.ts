@@ -27,10 +27,6 @@ namespace Abschlussarbeit {
 
     export let gametime: number = 0;
 
-    export let movePoint: Vector = new Vector (0, 0);
-    export let movePointX: number;
-    export let movePointY: number;
-
     function handleLoad(_event: Event): void {
 
         let form: HTMLDivElement = document.querySelector("#form")!;
@@ -118,10 +114,7 @@ namespace Abschlussarbeit {
 
 
         ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka, classic, chicken, falafel);
-        //breads.push(doener, yufka);
-        /* let testEmployee = new Employee(1);
-        testEmployee.draw();
-        employee.push(testEmployee); */
+
         window.setInterval(countGametime, 1000);
 
         window.setInterval(update, 50);
@@ -231,7 +224,6 @@ namespace Abschlussarbeit {
 
         for (let a of employees) {
             a.move(1 / 50);
-            //movePoint = new Vector(a.position.x, a.position.y);
             a.draw(); 
         }
 

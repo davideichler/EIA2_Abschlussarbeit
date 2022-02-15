@@ -67,9 +67,6 @@ var Abschlussarbeit;
             else
                 orderBtn.addEventListener("click", this.orderIngredients);
         }
-        /* static topIngredient(): void {
-            
-        } */
         prepare() {
             //movePoint = new Vector (this.storagePositionX, this.storagePositionY);
             let storageMenu = document.querySelector("#storageMenu");
@@ -82,7 +79,6 @@ var Abschlussarbeit;
             pBar.id = "pBar";
             progress.appendChild(pBar);
             let neededFillAmount = this.barSize - this.nBar;
-            //let nPreperation: number = 
             if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
             }

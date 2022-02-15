@@ -38,38 +38,26 @@ namespace Abschlussarbeit {
                 console.log(this.selected);
                 this.showBreakBtn();
                 return true;
-            }  else 
+            }   
             this.selected = false;
             return false;
         }
                 
         public draw(): void {
+            crc2.save();
+            crc2.translate(this.position.x, this.position.y);
             if (this.mood <= 20 && this.mood >= -20) {
-                crc2.save();
-                crc2.translate(this.position.x, this.position.y);
                 drawHappyEmployee();
-                crc2.restore();
             } else if (this.mood > 20 && this.mood <= 40) {
-                crc2.save();
-                crc2.translate(this.position.x, this.position.y);
                 drawStressedEmployee();
-                crc2.restore();
             } else if (this.mood > 40) {
-                crc2.save();
-                crc2.translate(this.position.x, this.position.y);
                 drawOverchallengedEmployee();
-                crc2.restore();
             } else if (this.mood <= -21 && this.mood >= -40) {
-                crc2.save();
-                crc2.translate(this.position.x, this.position.y);
                 drawBoredEmployee();
-                crc2.restore();
-            } else if (this.mood <= -41) {
-                crc2.save();
-                crc2.translate(this.position.x, this.position.y);
+            } else if (this.mood <= -41) { 
                 drawUnderchallengedEmployee();
-                crc2.restore();
             }
+            crc2.restore();
 
             //console.log(this.selected);
             if (this.selected == true) {
@@ -84,17 +72,6 @@ namespace Abschlussarbeit {
             let offset: Vector = this.velocity.copy();
             offset.scale(_timeslice);
             this.position.add(offset);
-
-            //if (this.selected == true && )
-            
-            // this.velocity = new Vector (movePoint.x - this.position.x, movePoint.y - this.position.y);
-            // if (this.position.x == movePoint.x && this.position.y == movePoint.y) {
-            //     this.velocity = new Vector (0, 0);
-            // }
-            // this.velocity = new Vector (movePoint.x - this.position.x, movePoint.y - this.position.y);
-            // if (this.position.x == movePoint.x && this.position.y == movePoint.y) {
-            //      this.velocity = new Vector (0, 0);
-            // }
         }
 
         public moveTo (_positionX: number, _positionY: number, _timeslice: number): void {
@@ -112,25 +89,6 @@ namespace Abschlussarbeit {
 
             console.log(this.velocity);
         }
-
-
-        // public getClicked(_xClick: number, _yClick: number): boolean {
-        //     let distanceEmp: number =
-        //     Math.sqrt(( (_xClick - this.position.x) * (_xClick - this.position.x) )
-        //     +
-        //     ( (_yClick - this.position.y) * (_yClick - this.position.y) ));
-        //     console.log(distanceEmp);
-
-        //     if (distanceEmp < 30) {
-        //         console.log(distanceEmp);
-        //         this.selected = true;
-        //         console.log(this.selected);
-        //         this.showBreakBtn();
-        //         return true;
-        //     }  else 
-        //     //this.selected = false;
-        //     return false;
-        // }
 
         showBreakBtn(): void {
             let breakBtn: HTMLButtonElement = document.querySelector("#breakBtn")!;
@@ -163,23 +121,15 @@ namespace Abschlussarbeit {
 
         public countWorkime(): number {
             if (this.busy == true) {
-                //setInterval((): void => { 
                     this.worktime++;
-                    
-                    //},      1000);
             } 
             return this.worktime;
         }
 
         public countPausetime(): number {
-            //console.log(this.busy);
             if (this.busy == false) {
-                //setInterval((): void => { 
                     this.pausetime++;
-                    
-                   // },      1000);
             } 
-            //console.log(this.pausetime);
             return this.pausetime;
         }
 

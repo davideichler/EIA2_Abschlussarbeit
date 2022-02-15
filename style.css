@@ -7,10 +7,6 @@ body {
     height: 720px;
     position: relative;
 }
-/* 
-#mainContainer canvas, #overlay {
-    position: absolute;
-} */
 
 #form {
     width: 500px;

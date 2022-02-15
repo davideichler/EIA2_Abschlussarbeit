@@ -103,10 +103,6 @@ namespace Abschlussarbeit {
             } else
             orderBtn.addEventListener("click", this.orderIngredients);
         }
-        
-        /* static topIngredient(): void {
-            
-        } */
 
         public prepare(): void {
             
@@ -124,7 +120,6 @@ namespace Abschlussarbeit {
             progress.appendChild(pBar); 
 
             let neededFillAmount: number = this.barSize - this.nBar;
-            //let nPreperation: number = 
 
             if (neededFillAmount > this.nStorage) {
                 this.nStorage -= this.nStorage;
@@ -135,9 +130,8 @@ namespace Abschlussarbeit {
             Employee.busy = true;
 
             console.log(this.storagePositionX, this.storagePositionY);
-            
+        
             employees[0].moveTo(this.storagePositionX, this.storagePositionY, 1 / 50);
-
 
             let counter: number = this.preperationTime;
             let assistenceNum: number = this.preperationTime;
@@ -203,7 +197,7 @@ namespace Abschlussarbeit {
         }
 
         static fillBar(): void {
-            
+
         }
     }
 

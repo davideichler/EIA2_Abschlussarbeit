@@ -12,9 +12,10 @@ var Abschlussarbeit;
             if (this.orderType == true) {
                 this.generateCustomerOrder();
             }
+            else
+                this.makeOrder();
         }
         generateCustomerOrder() {
-            //let fullOrder: string = " ";
             let rndMain = Math.floor(Math.random() * this.mainIngredient.length);
             let mainPick = this.mainIngredient.splice(rndMain, 1);
             this.fullOrder += mainPick + " ";
@@ -56,6 +57,8 @@ var Abschlussarbeit;
                 this.fullOrder += " " + extraPick;
             }
             console.log(this.fullOrder);
+        }
+        makeOrder() {
         }
     }
     Abschlussarbeit.Order = Order;

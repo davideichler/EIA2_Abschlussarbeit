@@ -17,7 +17,6 @@ var Abschlussarbeit;
     let stockCapacity;
     let background;
     Abschlussarbeit.gametime = 0;
-    Abschlussarbeit.movePoint = new Abschlussarbeit.Vector(0, 0);
     function handleLoad(_event) {
         let form = document.querySelector("#form");
         form.addEventListener("change", handleChange);
@@ -83,10 +82,6 @@ var Abschlussarbeit;
         let chicken = new Abschlussarbeit.Ingredient("chicken", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
         let falafel = new Abschlussarbeit.Ingredient("falafel", 1000, 1000, 1000, 1000, 20, 0, 300, 150, 0, 0);
         Abschlussarbeit.ingredients.push(salad, onion, corn, tomato, kraut, peperoni, doener, yufka, classic, chicken, falafel);
-        //breads.push(doener, yufka);
-        /* let testEmployee = new Employee(1);
-        testEmployee.draw();
-        employee.push(testEmployee); */
         window.setInterval(countGametime, 1000);
         window.setInterval(update, 50);
     }
@@ -193,7 +188,6 @@ var Abschlussarbeit;
         //employee.draw();
         for (let a of Abschlussarbeit.employees) {
             a.move(1 / 50);
-            //movePoint = new Vector(a.position.x, a.position.y);
             a.draw();
         }
         for (let a of customers) {

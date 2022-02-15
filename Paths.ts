@@ -50,8 +50,7 @@ namespace Abschlussarbeit {
         crc2.closePath();
     }
 
-    export function drawBoredEmployee(): void {
-        
+    export function drawBoredEmployee(): void {       
         crc2.beginPath();
         crc2.arc(0, 0, 25, 0, 2 * Math.PI);
         crc2.fillStyle = "yellow";
