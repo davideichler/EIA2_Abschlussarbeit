@@ -1,0 +1,11 @@
+Anleitung Döner Simulation
+
+Wie kann mein Döner Simulation funktionieren?
+
+Um die Simulation zu steuern musst du vor dem Beginn erst einige Daten festlegen. Drücke auf Start und die Simulation beginnt!
+Alles in allem kannst du den Döner Simulator ähnlich bedienen, wie das beliebte Spiel "Die Sims". Drücke auf den Mitarbeiter, den du bedienen möchtest und schon kann du loslegen.
+Schicke ihn zum Kunden, lass ihn Zwiebeln schneiden oder entlasse ihn - wenn er schlecht gelaunt ist - in die Mittagspause.
+
+____
+Leider habe ich es in der Zeit nicht geschafft die Anwendung komplett zum laufen zu bringen, da ich beinahe die volle Zeit mit Konzeption beschäftigt war.
+Doch sobald das Konzept richtig umgesetzt ist, geht es ran an den Spieß!
