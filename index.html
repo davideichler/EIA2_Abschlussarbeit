@@ -23,21 +23,31 @@
         <h2>Settings</h2>
             <fieldset class="fieldset" id="fsEmployee">
                 <legend>Anzahl Mitarbeiter:innen</legend>
-                <input type="number" id="nEmployees" name="nEmployees" min = "1" max = "4" step="1">
+                <input type="number" id="nEmployees" name="nEmployees" min = "1" max = "4" step="1" required>
             </fieldset>
 
             <fieldset class="fieldset" id="fsCustomers">
                 <legend>Anzahl Kund:innen pro Zeit</legend>
-                <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "5" step="1">
+                <input type="number" id="nCustomers" name="nCustomers" min = "1" max = "5" step="1" required>
             </fieldset>
 
             <fieldset class="fieldset" id="fsstockCapacity">
                 <legend>Lagerkapazitäten</legend>
-                <input type="radio" id="sizeHigh" name="stockCapacity" value="high">
+                <input type="radio" id="sizeHigh" name="stockCapacity" value="high" required>
                 <label for="sizeHigh">Groß</label>
-                <input type="radio" id="sizeMedium" name="stockCapacity" value="medium">
+                <input type="radio" id="sizeMedium" name="stockCapacity" value="medium" required>
                 <label for="sizeMedium">Normal</label>
-                <input type="radio" id="sizeLow" name="stockCapacity" value="low">
+                <input type="radio" id="sizeLow" name="stockCapacity" value="low" required>
+                <label for="sizeLow">Gering</label>
+            </fieldset>
+
+            <fieldset class="fieldset" id="fsmoodFactor">
+                <legend>Mitarber-Stressfaktor</legend>
+                <input type="radio" id="moodHigh" name="moodFactor" value="high" required>
+                <label for="sizeHigh">Groß</label>
+                <input type="radio" id="moodMedium" name="moodFactor" value="medium" required>
+                <label for="sizeMedium">Normal</label>
+                <input type="radio" id="moodLow" name="moodFactor" value="low" required>
                 <label for="sizeLow">Gering</label>
             </fieldset>
 
